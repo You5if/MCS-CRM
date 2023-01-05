@@ -1,0 +1,72 @@
+<section class="section" [dir]="direction">
+  <div class="bigMain" fxLayout>
+    <h3 class="fontY">
+      {{ dialog_title  }} 
+    </h3>
+    <img (click)="onCancel()" class="cancel_Img" src="../../../../assets/images/svg/close.png" alt="">
+  </div>
+
+
+  <form class="Main" [dir]="direction"  >
+    <div class="container">
+      <mat-grid-list
+        [cols]="breakpoint"
+        rowHeight="105px"
+        (window:resize)="onResize($event)"
+
+      >
+      <mat-grid-tile >
+        <mat-form-field appearance="fill">
+          <mat-label>Campaign</mat-label>
+          <mat-select
+            [(ngModel)]="dummy.campaignId"
+            
+            [ngModelOptions]="{standalone: true}"
+            
+          >
+            <mat-option
+              *ngFor="let choice of members"
+              [value]="choice.id"
+              
+            >
+              {{ choice.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      
+      </mat-grid-list>
+      <div cdkDropListGroup fxLayout style="justify-content: center;">
+        <div class="example-container">
+          <h2>Employees</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+          <h2>Campaign memebers</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </form>
+  <div class="btn-container">
+    <button class="BtnC" (click)="onCancel()" mat-button color="warn" type="submit">{{cancel}}</button>
+    <button class="BtnS" (click)="onSubmit()" mat-button color="primary" type="submit">{{submit}}</button>
+  </div>
+</section>
+

@@ -1,0 +1,187 @@
+<section class="section" [dir]="direction">
+  <div class="bigMain" fxLayout>
+    <h3 class="fontY">
+      {{ dialog_title  }} 
+    </h3>
+    <img (click)="onCancel()" class="cancel_Img" src="../../../../assets/images/svg/close.png" alt="">
+  </div>
+
+
+  <form class="Main" [dir]="direction"  >
+    <div class="container">
+      <mat-grid-list
+        [cols]="breakpoint"
+        rowHeight="105px"
+        (window:resize)="onResize($event)"
+
+      >
+      <mat-grid-tile >
+        
+            <!-- <mat-form-field  appearance="outline">
+              <mat-label>Campaign code</mat-label>
+              <input
+                matInput
+                [(ngModel)]="dummy.campCode"
+                name="campCode"
+                type="text"
+
+                placeholder="Type some text"
+              />
+            </mat-form-field> -->
+            <div>
+              {{dummy.campCode}}
+            </div>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        
+            <mat-form-field  appearance="outline">
+              <mat-label>Campaign name</mat-label>
+              <input
+                matInput
+                [(ngModel)]="dummy.campName"
+                name="campName"
+                type="text"
+
+                placeholder="Type some text"
+              />
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        
+        <mat-form-field  appearance="outline">
+          <mat-label>Objective</mat-label>
+          <textarea
+            matInput
+            rows="2"
+            [(ngModel)]="dummy.campObjective"
+
+            name="campObjective"
+            type="text"
+            placeholder="Type some text"
+          ></textarea>
+
+
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <div>
+          <mat-form-field  appearance="outline">
+            <mat-label>Planned start date</mat-label>
+            <input
+              matInput
+              [(ngModel)]="dummy.plannedStartDate"
+              name="plannedStartDate"
+              type="date"
+              placeholder="Date"
+            />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <div>
+          <mat-form-field  appearance="outline">
+            <mat-label>Planned end date</mat-label>
+            <input
+              matInput
+              [(ngModel)]="dummy.plannedEndDate"
+              name="plannedEndDate"
+              type="date"
+              placeholder="Date"
+            />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <div>
+          <mat-form-field  appearance="outline">
+            <mat-label>Actual start date</mat-label>
+            <input
+              matInput
+              [(ngModel)]="dummy.actualStartDate"
+              name="actualStartDate"
+              type="date"
+              placeholder="Date"
+            />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <div>
+          <mat-form-field  appearance="outline">
+            <mat-label>Actual start date</mat-label>
+            <input
+              matInput
+              [(ngModel)]="dummy.actualEndDate"
+              name="actualEndDate"
+              type="date"
+              placeholder="Date"
+            />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        
+        <mat-form-field  appearance="outline">
+          <mat-label>Remarks</mat-label>
+          <textarea
+            matInput
+            rows="2"
+            [(ngModel)]="dummy.remarks"
+
+            name="remarks"
+            type="text"
+            placeholder="Type some text"
+          ></textarea>
+
+
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <mat-form-field appearance="fill">
+          <mat-label>Manager</mat-label>
+          <mat-select
+            [(ngModel)]="dummy.campManagerId"
+            
+            [ngModelOptions]="{standalone: true}"
+            
+          >
+            <mat-option
+              *ngFor="let choice of campManager"
+              [value]="choice.id"
+              
+            >
+              {{ choice.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Host</mat-label>
+          <mat-select
+            [(ngModel)]="dummy.hostId"
+            
+            [ngModelOptions]="{standalone: true}"
+            
+          >
+            <mat-option
+              *ngFor="let choice of campHost"
+              [value]="choice.id"
+              
+            >
+              {{ choice.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      
+      </mat-grid-list>
+    </div>
+    
+  </form>
+  <div class="btn-container">
+    <button class="BtnC" (click)="onCancel()" mat-button color="warn" type="submit">{{cancel}}</button>
+    <button class="BtnS" (click)="onSubmit()" mat-button color="primary" type="submit">{{submit}}</button>
+  </div>
+</section>
+
