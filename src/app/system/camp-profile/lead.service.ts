@@ -28,7 +28,7 @@ export class LeadService {
 
    // Get entry method of the model, which fethces data based on provided id (int)
    getLeadEntry(id: number): Observable<LeadModel> {
-      return this.httpClient.get<LeadModel>(this._globals.baseAPIUrl + 'Lead/' + id).pipe(
+      return this.httpClient.get<LeadModel>(this._globals.baseAPIUrl + 'Campaign/' + id).pipe(
       map((result: LeadModel) => {
       return result;
       }), catchError(this._cf.handleError)
@@ -49,7 +49,7 @@ export class LeadService {
 
           // Case A is for adding a new record
           case 'A': {
-          return this.http.post(this._globals.baseAPIUrl + 'Lead/create', data, this._cf.requestOptions()).pipe(
+          return this.http.post(this._globals.baseAPIUrl + 'Campaign/create', data, this._cf.requestOptions()).pipe(
           map((response: Response) => {
           return response.json();
           }), catchError(this._cf.handleError));
@@ -57,7 +57,7 @@ export class LeadService {
 
           // Case E is for editing an existing record
           case 'E': {
-          return this.http.post(this._globals.baseAPIUrl + 'Lead/edit', data, this._cf.requestOptions()).pipe(
+          return this.http.post(this._globals.baseAPIUrl + 'Campaign/edit', data, this._cf.requestOptions()).pipe(
           map((response: Response) => {
           return response.json();
           }), catchError(this._cf.handleError));
@@ -65,7 +65,7 @@ export class LeadService {
 
           // Case D is for deleting a record
           case 'D': {
-          return this.http.post(this._globals.baseAPIUrl + 'Lead/delete', data, this._cf.requestOptions()).pipe(
+          return this.http.post(this._globals.baseAPIUrl + 'Campaign/delete', data, this._cf.requestOptions()).pipe(
           map((response: Response) => {
           return response.json();
           }), catchError(this._cf.handleError));

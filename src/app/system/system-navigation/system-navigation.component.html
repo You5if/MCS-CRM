@@ -55,9 +55,9 @@
         <li *ngIf="role === '2' || role === '15'" routerLink="lead" routerLinkActive="is-active"  class="side_list_item"><mat-icon>how_to_reg</mat-icon><div class="title"> {{leadass}}</div></li>
         <li *ngIf="role === '2' || role === '16'" routerLink="lead" routerLinkActive="is-active"  class="side_list_item"><mat-icon>poll</mat-icon><div class="title"> {{leadfollow}}</div></li>
           </mat-expansion-panel>
-        </mat-accordion>
-        <mat-divider *ngIf="role === '2'"></mat-divider>
-        <mat-accordion>
+        
+        <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
+        
           <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
@@ -72,6 +72,22 @@
         <li *ngIf="role === '2'" routerLink="campaign-budgeting" routerLinkActive="is-active"  class="side_list_item"><mat-icon> attach_money</mat-icon><div class="title"> {{campaignBudgeting}}</div></li>
         <li *ngIf="role === '2'" routerLink="campaign-expenses" routerLinkActive="is-active"  class="side_list_item"><mat-icon> pie_chart</mat-icon><div class="title"> {{campaignExpenses}}</div></li>
         <li *ngIf="role === '2'" routerLink="campaign-activites"  routerLinkActive="is-active"  class="side_list_item"><mat-icon>collections</mat-icon><div class="title"> {{campaignActivities}}</div></li>
+          </mat-expansion-panel>
+        
+        <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
+        
+          <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
+            <mat-expansion-panel-header [@.disabled]="true">
+              <mat-panel-title>
+                <mat-icon> local_printshop</mat-icon> <div class="exTitle">{{reports}}</div>
+              
+              </mat-panel-title>
+              <div><mat-icon class="indicator">chevron_right</mat-icon></div>
+            </mat-expansion-panel-header>
+ 
+        <li *ngIf="role === '2'" routerLink="lead-reports"  routerLinkActive="is-active"  class="side_list_item">	<mat-icon> contacts</mat-icon><div class="title"> {{leadReports}}</div></li>
+        <li *ngIf="role === '2'" routerLink="campaign-reports"  routerLinkActive="is-active"  class="side_list_item"><mat-icon>poll</mat-icon><div class="title"> {{campReports}}</div></li>
+        
           </mat-expansion-panel>
         </mat-accordion>
         <!-- <div *ngIf="role === '2'" class="main_title">

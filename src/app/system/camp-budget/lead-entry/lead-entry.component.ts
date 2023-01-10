@@ -58,7 +58,7 @@ campHost = [
 	url: string;
 
     model: Send = {
-      tableId: 114,
+      tableId: 122,
       recordId: 0,
       userId: +this._auth.getUserId(),
       roleId: Number(localStorage.getItem('role')),
@@ -217,23 +217,68 @@ campHost = [
   }
 
   onSubmit() {
-    this.camps.forEach((index) => {
-      if(index.id === this.dummy.campId){
-        this.dummy.campName = index.name
+    this.data.forEach((Object)=> this.light.forEach((obj)=>
+    {
+      if(Object.tableColumnId === obj.tableColumnId){
+        Object.value = obj.value
       }
-    })
-    this.campCurrency.forEach((index) => {
-      if(index.id === this.dummy.campId){
-        this.dummy.currency = index.name
-      }
-    })
-   
-    this.dummyService.campBudget.push(this.dummy)
-    console.log(this.dummyService.campProfile);
-    this._msg.showInfo("Message", "saved succesfully");
-    this.dialogRef.close();
-    
+    }));
+	
+    for(let i=0;i<=this.data.length;i++){
+      this.obj1 = this.data[i];
+       if(this.obj1 ){
+         this.last.records.push(this.obj1);
+       }
+     }
+     this.last.records.sort(function(a:any, b:any) { 
+      return a.applicationOrder - b.applicationOrder  ||  a.label.localeCompare(b.label);
+    }); 
 
+          if(this.last.records[0].entryMode == "A"){
+           this.last.auditColumn = this._auth.getAuditColumns();
+           this.dapiService.EntryA(this.last).subscribe(nexto => {
+             this.res = nexto;
+             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+              this._msg.showInfo("Message", "saved succesfully");
+            this.dialogRef.close();
+            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+              this._msg.showInfo("رسالة", "تم الحفظ بنجاح");
+            this.dialogRef.close();
+            }
+     
+           }, error => {
+             console.log(error);
+             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+              this._msg.showInfo("Message", "Error!!");
+            this.dialogRef.close();
+            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+              this._msg.showInfo("رسالة", "توجد مشكلة");
+            this.dialogRef.close();
+            }
+           });
+         }else if(this.last.records[0].entryMode == "E"){
+           this.last.auditColumn = this._auth.getAuditColumns();
+           this.dapiService.EntryE(this.last).subscribe(nexto => {
+             this.res = nexto;
+             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+              this._msg.showInfo("Message", "saved succesfully");
+            this.dialogRef.close();
+            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+              this._msg.showInfo("رسالة", "تم الحفظ بنجاح");
+            this.dialogRef.close();
+            }
+     
+           }, error => {
+             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+              this._msg.showInfo("Message", "Error!!");
+            this.dialogRef.close();
+            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+              
+              this._msg.showInfo("خطأ!!", "توجد مشكلة");
+            this.dialogRef.close();
+            }
+           });
+         }
       }
 
   onResize(event:any) {

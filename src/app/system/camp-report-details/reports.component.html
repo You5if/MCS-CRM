@@ -1,0 +1,209 @@
+<div class="main">
+  <p class="title">
+    Campaign Profile
+  </p>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Campaign Code:</div>
+      <div class="dataData">{{camp.campaignCode}}</div>
+    </div>
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Campaign Name:</div>
+      <div class="dataData">{{camp.campaignName}}</div>
+    </div>
+    
+    
+    
+  </div>
+  <div class="data" >
+    
+    
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Campaign Objective:</div>
+      <div class="dataData">{{camp.objective}}</div>
+    </div>
+    
+  </div>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Planned start:</div>
+      <div class="dataData">{{camp.plStDate | date}}</div>
+    </div>
+    
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Planned End:</div>
+      <div class="dataData">{{camp.plEnDate | date}}</div>
+    </div>
+    
+    
+  </div>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Actual start:</div>
+      <div class="dataData">{{camp.acStDate | date}}</div>
+    </div>
+    
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Actual End:</div>
+      <div class="dataData">{{camp.acEnDate | date}}</div>
+    </div>
+    <!-- <div class="dataChildSpace" fxLayoutGap="5px">
+    </div> -->
+    
+  </div>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Manager:</div>
+      <div class="dataData">{{camp.managerName}}</div>
+    </div>
+    
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Host:</div>
+      <div class="dataData">{{camp.hostName}}</div>
+    </div>
+    <!-- <div class="dataChildSpace" fxLayoutGap="5px">
+    </div> -->
+    
+  </div>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Remarks:</div>
+      <div class="dataData">{{camp.remarks}}</div>
+    </div>
+    
+    
+    
+  </div>
+
+  <div class="data">
+    
+     
+  </div>
+ 
+  <div class="data">
+    <div class="dataChild3" fxLayoutGap="5px">
+
+      <div class="dataChild2" fxLayoutGap="5px">
+        <div class="dataTitle">Members:</div>
+        <div class="members" *ngFor="let mem of camp.campMemIndex" fxLayoutGap="5px">
+          <div class="dataData2">{{mem.memberName}}</div>
+   
+          
+        </div>
+      </div>
+      
+      <div class="table">
+        <table mat-table [dataSource]="dataSource" class="tableBorder">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell class="title2" *matHeaderCellDef>Acvtivites</th>
+            <td mat-cell *matCellDef="let element"> {{element.actName}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+     
+      
+      
+      
+    </div>
+
+    
+  </div>
+  <div class="data">
+    <div class="dataChild3" fxLayoutGap="5px">
+      <div class="table" fxLayoutGap="5px">
+        <div class="dataTitle">Expenses:</div>
+        <table mat-table [dataSource]="dataSource2" class="tableBorder">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell class="title2" *matHeaderCellDef> currency </th>
+            <td mat-cell *matCellDef="let element"> {{element.currencyName}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell class="title2" *matHeaderCellDef> Rate </th>
+            <td mat-cell *matCellDef="let element"> {{element.forexRate}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell class="title2" *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell class="title2" *matHeaderCellDef> SDG </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalRow}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+      </div>
+      <div class="table" fxLayoutGap="5px">
+        <div class="dataTitle">Budget:</div>
+        <table mat-table [dataSource]="dataSource3" class="tableBorder" >
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell class="title2" *matHeaderCellDef> currency </th>
+            <td mat-cell *matCellDef="let element"> {{element.currencyName}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell class="title2" *matHeaderCellDef> Rate </th>
+            <td mat-cell *matCellDef="let element"> {{element.forexRate}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell class="title2" *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell class="title2" *matHeaderCellDef> SDG </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalRow}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+        </table>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    
+  </div>
+  <div class="data" >
+    <div class="dataChild" fxLayoutGap="5px">
+      <div class="dataTitle">Balance of Campaign:</div>
+      <div class="dataData">{{balance}} SDG</div>
+    </div>
+    
+  </div>
+  
+
+  

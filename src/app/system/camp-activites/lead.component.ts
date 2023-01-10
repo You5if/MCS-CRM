@@ -87,9 +87,9 @@ role = localStorage.getItem("role");
         private leadservice: LeadService,
         private dummyService: DummyService,
       ) {
-        this.pTableName = 'Lead';
-        this.pScreenId = 114;
-        this.pTableId = 114;
+        this.pTableName = 'CampAct';
+        this.pScreenId = 124;
+        this.pTableId = 124;
         this.recordsPerPage = 10;
         this.currentPageIndex = 1;
         this.menuId = 1019106011;
@@ -133,17 +133,17 @@ role = localStorage.getItem("role");
       this.submit = "ارسال"
       this.cancel = "الغاء"
     }
-    this.dataSource = new MatTableDataSource(this.dummyService.campActivities);
-    this._cf.getPageData('Lead', this.pScreenId, this._auth.getUserId(), this.pTableId,
+
+    this._cf.getPageData('CampAct', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
           this.workShimmer = false
-          console.log(this.dummyService.campActivities);
+          console.log(result);
           
-          this.totalRecords = this.dummyService.campActivities.length;
+          this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
-          this.dataSource = new MatTableDataSource(this.dummyService.campActivities);
-          this.indexes = this.dummyService.campActivities
+          this.dataSource = new MatTableDataSource(result);
+          this.indexes = result
         }
       );
 
@@ -174,9 +174,9 @@ role = localStorage.getItem("role");
           (result: any) => {
             this.workShimmer = false
             // this._ui.loadingStateChanged.next(false);
-            this.totalRecords = this.dummyService.campActivities.length;
+            this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
-            this.dataSource = this.dummyService.campActivities;
+            this.dataSource = result;
           }, error => {
             // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
@@ -198,7 +198,7 @@ role = localStorage.getItem("role");
 
   onAdd  () {
     this.model = {
-      tableId: 114,
+      tableId: 124,
       recordId: 0,
       userId: Number(this._auth.getUserId()),
       roleId: Number(localStorage.getItem('role')),
@@ -224,20 +224,20 @@ role = localStorage.getItem("role");
   }
 
   onEdit = (id: number) => {
-    // this.model = {
-    //   tableId: 114,
-    //   recordId: id,
-    //   userId: Number(this._auth.getUserId()),
-    //   roleId: Number(localStorage.getItem('role')),
-    //   languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
-    // };
-    // if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-    //   localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit lead");
-    // }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-    //   localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل");
-    // }
+    this.model = {
+      tableId: 124,
+      recordId: id,
+      userId: Number(this._auth.getUserId()),
+      roleId: Number(localStorage.getItem('role')),
+      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+    };
+    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit Activity");
+    }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل نشاط");
+    }
     
-    // this.openEntry2(this.model)
+    this.openEntry2(this.model)
   }
 
   onDelete = function(id: number) {

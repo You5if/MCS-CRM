@@ -79,7 +79,7 @@
               <div [ngSwitch]="source.access">
                 <div *ngSwitchCase="'Editable'">
                  <div *ngIf="source.tableColumnId === 1009">
-                  <mat-form-field *ngIf="showCustName" appearance="outline">
+                  <mat-form-field  appearance="outline">
                     <mat-label>{{ source.label }}</mat-label>
                     <input
                       matInput
@@ -240,7 +240,7 @@
                     
                   </div>
                   <div *ngIf="source.tableColumnId === 1009">
-                    <mat-form-field *ngIf="showCustName"  appearance="fill">
+                    <mat-form-field   appearance="fill">
                       <mat-label>{{ source.label }}</mat-label>
                       <mat-select
                         [(ngModel)]="+source.value"

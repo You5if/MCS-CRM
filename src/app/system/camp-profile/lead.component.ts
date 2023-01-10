@@ -43,8 +43,8 @@ currentPageIndex: number;
 menuId: number;
 leadSt: string;
 leadEn: string;
-clickedRows = new Set<LeadModel>();
-selection = new SelectionModel<LeadModel>(true, []);fullName: string;
+clickedRows = new Set<any>();
+selection = new SelectionModel<any>(true, []);fullName: string;
   custType: string;
 ;
 
@@ -86,9 +86,9 @@ role = localStorage.getItem("role");
         private leadservice: LeadService,
         private dummyService: DummyService,
       ) {
-        this.pTableName = 'Lead';
-        this.pScreenId = 114;
-        this.pTableId = 114;
+        this.pTableName = 'Campaign';
+        this.pScreenId = 120;
+        this.pTableId = 120;
         this.recordsPerPage = 10;
         this.currentPageIndex = 1;
         this.menuId = 1019106011;
@@ -130,17 +130,17 @@ role = localStorage.getItem("role");
       this.submit = "ارسال"
       this.cancel = "الغاء"
     }
-    this.dataSource = new MatTableDataSource(this.dummyService.campProfile);
-    this._cf.getPageData('Lead', this.pScreenId, this._auth.getUserId(), this.pTableId,
+   
+    this._cf.getPageData('Campaign', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
           this.workShimmer = false
-          console.log(this.dummyService.campProfile);
+          console.log(result);
           
-          this.totalRecords = this.dummyService.campProfile.length;
+          this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
-          this.dataSource = new MatTableDataSource(this.dummyService.campProfile);
-          this.indexes = this.dummyService.campProfile
+          this.dataSource = new MatTableDataSource(result);
+          this.indexes = result
         }
       );
 
@@ -171,9 +171,9 @@ role = localStorage.getItem("role");
           (result: any) => {
             this.workShimmer = false
             // this._ui.loadingStateChanged.next(false);
-            this.totalRecords = this.dummyService.campProfile.length;
+            this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
-            this.dataSource = this.dummyService.campProfile;
+            this.dataSource = result;
           }, error => {
             // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
@@ -195,7 +195,7 @@ role = localStorage.getItem("role");
 
   onAdd  () {
     this.model = {
-      tableId: 114,
+      tableId: 120,
       recordId: 0,
       userId: Number(this._auth.getUserId()),
       roleId: Number(localStorage.getItem('role')),
@@ -221,20 +221,20 @@ role = localStorage.getItem("role");
   }
 
   onEdit = (id: number) => {
-    // this.model = {
-    //   tableId: 114,
-    //   recordId: id,
-    //   userId: Number(this._auth.getUserId()),
-    //   roleId: Number(localStorage.getItem('role')),
-    //   languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
-    // };
-    // if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-    //   localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit lead");
-    // }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-    //   localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل");
-    // }
+    this.model = {
+      tableId: 120,
+      recordId: id,
+      userId: Number(this._auth.getUserId()),
+      roleId: Number(localStorage.getItem('role')),
+      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+    };
+    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit campaign");
+    }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل حملة");
+    }
     
-    // this.openEntry2(this.model)
+    this.openEntry2(this.model)
   }
 
   onDelete = function(id: number) {

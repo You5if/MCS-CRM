@@ -121,6 +121,8 @@ export class SystemNavigationComponent implements OnInit {
   campaignBudgeting: string;
   campaignExpenses: string;
   campaignActivities: string;
+  leadReports: string;
+  campReports: string;
 
   constructor(private _globals: AppGlobals,
     private _auth: AuthService,
@@ -175,6 +177,8 @@ ngOnInit(): void {
       this.campaignActivities = "Campaign Activities"
       this.tax = "Taxes"
       this.forex = "Forex"
+      this.leadReports = "Lead Reports"
+      this.campReports = "Campaign Reports"
       this.shipping = "Shipping"
       this.customer = "Customer"
       this.lead = "Lead"
@@ -811,9 +815,14 @@ dialogRef.afterClosed().subscribe(() => {});
       this.bankBranch = "Bank branch"
       this.bankAccount = "Bank account"
       this.forex = "Forex"
+      this.leadReports = "Lead Reports"
+      this.campReports = "Campaign Reports"
       this.partTrans = "Partners' management"
       this.customer = "Customer"
       this.lead = "Lead"
+      
+      this.leadReports = "Lead Reports"
+      this.campReports = "Campaign Reports"
       this.leadcre = "Lead Creation"
       this.leadqua = "Lead Qualification"
       this.leaddis = "Lead Distribution"
@@ -904,6 +913,8 @@ dialogRef.afterClosed().subscribe(() => {});
       this.leadass = "تعيين الفرص"
       this.leadfollow = "متابعة الفرص"
       this.forex = "فوركس"
+      this.leadReports = "تقارير الفرص"
+      this.campReports = "تقارير الحملات"
       this.account = "الحسابات"
       this.partner = "الشركاء"
       this.purchase = "عمليات الشراء"
@@ -985,6 +996,8 @@ dialogRef.afterClosed().subscribe(() => {});
       this.proExpenseList = "Procurement expense list"
       this.suppForex = "Purchase forex"
       this.forex = "Forex"
+      this.leadReports = "Lead Reports"
+      this.campReports = "Campaign Reports"
       this.shipping = "Shipping"
       this.transGood = "Transporting goods"
       this.account = "Account"

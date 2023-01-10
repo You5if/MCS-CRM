@@ -1,0 +1,155 @@
+<div class="mainMain">
+  <p class="title">
+    Customer Type
+  </p>
+  <mat-accordion>
+   
+    <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
+      <mat-expansion-panel-header [@.disabled]="true">
+        <mat-panel-title fxLayout fxLayoutGap="10px">
+          <div class="dataChild2" fxLayoutGap="5px">
+            <div class="dataTitle">Customer Name:</div>
+            <!-- <div class="dataData">{{lead.custName}}</div> -->
+          </div>
+          <div class="dataChild2" fxLayoutGap="5px">
+            <div class="dataTitle">Customer Type:</div>
+            <!-- <div class="dataData">{{lead.custTypeName}}</div> -->
+          </div>  
+          <div class="dataChild2" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Qualification:</div>
+            <!-- <div class="dataData">{{lead.leadQualName}}</div> -->
+            <!-- <div *ngIf="lead.leadQualName == 'Hot'" class="dataDataQualHot">Hot<mat-icon>arrow_upward</mat-icon></div>
+      <div *ngIf="lead.leadQualName == 'Warm'" class="dataDataQualWarm">Warm -</div>
+      <div *ngIf="lead.leadQualName == 'Cold'" class="dataDataQualCold">Cold<mat-icon>arrow_downward</mat-icon></div> -->
+          </div>
+          
+        </mat-panel-title>
+        <mat-icon class="indicator">chevron_right</mat-icon>
+        
+      </mat-expansion-panel-header>
+      <div class="main">
+        <div class="data" >
+          
+          
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Business Class:</div>
+            <!-- <div class="dataData">{{lead.businessClassName}}</div> -->
+          </div>  
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Est. Business Size:</div>
+            <!-- <div class="dataData">{{lead.businessSize}}</div> -->
+          </div>
+          
+        </div>
+      
+        <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Contact 1:</div>
+            <!-- <div class="dataData">{{lead.contactNo}}</div> -->
+          </div>
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Contact 2:</div>
+            <!-- <div class="dataData">{{lead.contactNo2}}</div> -->
+          </div>  
+          
+        </div>
+        <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Address:</div>
+            <!-- <div class="dataData">{{lead.address}}</div> -->
+          </div>
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Email:</div>
+            <!-- <div class="dataData">{{lead.address}}</div> -->
+          </div>
+          
+         
+        </div>
+        
+        <div class="data">
+          
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Other Details:</div>
+            <!-- <div class="dataData">{{lead.otherDet}}</div> -->
+          </div>  
+        </div>
+        <!-- <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Qualification:</div> -->
+            <!-- <div class="dataData">{{lead.leadQualName}}</div> -->
+            <!-- <div *ngIf="lead.leadQualName == 'Hot'" class="dataDataQualHot">Hot<mat-icon>arrow_upward</mat-icon></div>
+      <div *ngIf="lead.leadQualName == 'Warm'" class="dataDataQualWarm">Warm -</div>
+      <div *ngIf="lead.leadQualName == 'Cold'" class="dataDataQualCold">Cold<mat-icon>arrow_downward</mat-icon></div> -->
+          <!-- </div>
+          
+        </div> -->
+        
+      
+        
+        <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Source:</div>
+            <!-- <div class="dataData">{{lead.leadChannelName}}</div> -->
+          </div>
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Status:</div>
+            <!-- <div class="dataData">{{lead.leadStatusName}}</div> -->
+            <!-- <div *ngIf="lead.leadStatusName == 'Lost'" class="dataDataQualHot">Lost <mat-icon>arrow_downward</mat-icon>-</div>
+            <div *ngIf="lead.leadStatusName == 'Negative'" class="dataDataQualN">Negative -</div>
+            <div *ngIf="lead.leadStatusName == 'Positive'" class="dataDataQualP">Positive +</div>
+            <div *ngIf="lead.leadStatusName == 'Won'" class="dataDataQualWon">Won <mat-icon>arrow_upward</mat-icon>+</div> -->
+          </div>
+         
+        </div>
+        <div class="data">
+          
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Class:</div>
+            <!-- <div class="dataData">{{lead.leadClassName}}</div> -->
+          </div>
+        </div>
+      
+        <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead Start:</div>
+            <!-- <div class="dataData">{{lead.leadSt | date}}</div> -->
+          </div>
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Lead End:</div>
+            <!-- <div class="dataData">{{lead.leadEn | date}}</div> -->
+          </div>  
+         
+        </div>
+      
+        <div class="data">
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Assign Dept.:</div>
+            <!-- <div class="dataData">{{lead.deptName}}</div> -->
+          </div>
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Member Assigning:</div>
+            <!-- <div class="dataData">{{lead.appUserName}}</div> -->
+          </div>
+          
+        </div>
+      
+       
+        <div class="data">
+          
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Comments:</div>
+            <!-- <div class="dataData">{{lead.comments}}</div> -->
+          </div>  
+        </div>
+        <div class="data">
+          
+          <div class="dataChild" fxLayoutGap="5px">
+            <div class="dataTitle">Remarks:</div>
+            <!-- <div class="dataData">{{lead.remarks}}</div> -->
+          </div>  
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>

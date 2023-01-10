@@ -216,6 +216,15 @@ import { CExpenseComponent } from "./system/camp-expense/lead.component";
 import { CExpenseEntryComponent } from "./system/camp-expense/lead-entry/lead-entry.component";
 import { CActivitesComponent } from "./system/camp-activites/lead.component";
 import { CActivitesEntryComponent } from "./system/camp-activites/lead-entry/lead-entry.component";
+import { LeadReportsComponent } from "./system/lead-reports/reports.component";
+import { CampReportsComponent } from "./system/camp-reports/reports.component";
+import { LeadReportDetailsComponent } from "./system/lead-report-details/reports.component";
+import { CampReportDetailsComponent } from "./system/camp-report-details/reports.component";
+import { LeadBusinessReportComponent } from "./system/lead-business-report/reports.component";
+import { LeadCustomerTypeReportComponent } from "./system/lead-customertype-report/reports.component";
+import { LeadClassReportComponent } from "./system/lead-class-report/reports.component";
+import { LeadStatusReportComponent } from "./system/lead-status-report/reports.component";
+import { LeadQualReportComponent } from "./system/lead-qual-report/reports.component";
 
 
 
@@ -415,6 +424,15 @@ export const jwtConfig = {
     CExpenseEntryComponent,
     CActivitesComponent,
     CActivitesEntryComponent,
+    LeadReportsComponent,
+    CampReportsComponent,
+    LeadReportDetailsComponent,
+    CampReportDetailsComponent,
+    LeadBusinessReportComponent,
+    LeadCustomerTypeReportComponent,
+    LeadClassReportComponent,
+    LeadStatusReportComponent,
+    LeadQualReportComponent,
     
     // EchartsComponent,
     
@@ -544,8 +562,15 @@ export const jwtConfig = {
     CBudgetEntryComponent,
     CExpenseEntryComponent,
     CActivitesEntryComponent,
-    
-    
+    LeadReportsComponent,
+    CampReportsComponent,
+    LeadReportDetailsComponent,
+    CampReportDetailsComponent,
+    LeadBusinessReportComponent,
+    LeadCustomerTypeReportComponent,
+    LeadClassReportComponent,
+    LeadStatusReportComponent,
+    LeadQualReportComponent,
     
    
 

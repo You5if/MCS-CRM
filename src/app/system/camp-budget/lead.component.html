@@ -129,7 +129,7 @@
     <ng-container matColumnDef="fullName">      <mat-header-cell class="centH" *matHeaderCellDef>{{fullName}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.campName}}</mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="custType">      <mat-header-cell class="centH" *matHeaderCellDef>{{custType}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.currency}}</mat-cell>
+    <ng-container matColumnDef="custType">      <mat-header-cell class="centH" *matHeaderCellDef>{{custType}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.currencyName}}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="leadSt">      <mat-header-cell class="centH" *matHeaderCellDef>{{leadSt}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.amount}}</mat-cell>
@@ -141,7 +141,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell class="cent" *matHeaderCellDef>{{edit}}</mat-header-cell>
       <mat-cell class="cent" mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="onEdit(row.leadId)" [disabled]="!screenRights.editFlag">
+        <button mat-icon-button color="primary" (click)="onEdit(row.campBudgetId)" [disabled]="!screenRights.editFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true">edit</mat-icon>
         </button>
       </mat-cell>
@@ -151,7 +151,7 @@
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary"
-          (click)="onDelete(row.leadId)" [disabled]="!screenRights.deleteFlag">
+          (click)="onDelete(row.campBudgetId)" [disabled]="!screenRights.deleteFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="warn">delete</mat-icon>
         </button>
       </mat-cell>
@@ -160,7 +160,7 @@
 
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.leadId)"
+      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.campBudgetId)"
           [disabled]="!screenRights.viewFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="primary">visibility
           </mat-icon>
@@ -170,7 +170,7 @@
 
     <mat-header-row class="headerRow" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.leadId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.campBudgetId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
 
   </mat-table>
 
@@ -190,7 +190,7 @@
         <div fxLayoutGap="5px" class="index_row">
           <h3>{{custType}}</h3>
           <h3>:</h3>
-          <h3 class="indexContent">{{ index.currency }}</h3>
+          <h3 class="indexContent">{{ index.currencyName }}</h3>
         </div>
         <div fxLayoutGap="5px" class="index_row">
           <h3>{{leadSt}}</h3>
@@ -212,7 +212,7 @@
       <div>
         <button class="Btn" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
 <mat-menu #menu="matMenu">
-  <button (click)="onEdit(index.leadId)" class="Btn" mat-menu-item>{{edit}}</button>
+  <button (click)="onEdit(index.campBudgetId)" class="Btn" mat-menu-item>{{edit}}</button>
   
 </mat-menu>
       </div>

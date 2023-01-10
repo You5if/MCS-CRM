@@ -40,6 +40,15 @@ import { CMemebersComponent } from "./system/camp-mambers/lead.component";
 import { CBudgetComponent } from "./system/camp-budget/lead.component";
 import { CExpenseComponent } from "./system/camp-expense/lead.component";
 import { CActivitesComponent } from "./system/camp-activites/lead.component";
+import { CampReportsComponent } from "./system/camp-reports/reports.component";
+import { LeadReportsComponent } from "./system/lead-reports/reports.component";
+import { LeadReportDetailsComponent } from "./system/lead-report-details/reports.component";
+import { CampReportDetailsComponent } from "./system/camp-report-details/reports.component";
+import { LeadBusinessReportComponent } from "./system/lead-business-report/reports.component";
+import { LeadCustomerTypeReportComponent } from "./system/lead-customertype-report/reports.component";
+import { LeadClassReportComponent } from "./system/lead-class-report/reports.component";
+import { LeadStatusReportComponent } from "./system/lead-status-report/reports.component";
+import { LeadQualReportComponent } from "./system/lead-qual-report/reports.component";
 
 
 const routes: Routes = [
@@ -74,6 +83,16 @@ const routes: Routes = [
         { path: "campaign-budgeting", component: CBudgetComponent},
         { path: "campaign-expenses", component: CExpenseComponent},
         { path: "campaign-activites", component: CActivitesComponent},
+        { path: "lead-reports", component: LeadReportsComponent},
+        { path: "lead-report-details", component: LeadReportDetailsComponent},
+        { path: "lead-business-report", component: LeadBusinessReportComponent},
+        { path: "lead-customertype-report", component: LeadCustomerTypeReportComponent},
+        { path: "lead-class-report", component: LeadClassReportComponent},
+        { path: "lead-status-report", component: LeadStatusReportComponent},
+        { path: "lead-qualification-report", component: LeadQualReportComponent},
+        { path: "camp-report-details", component: CampReportDetailsComponent},
+        { path: "campaign-reports", component: CampReportsComponent},
+        { path: "report-page", component: ReportPageComponent },
       ]},
       
   //     //  { path: 'dohinv', component: InventoriesComponent },

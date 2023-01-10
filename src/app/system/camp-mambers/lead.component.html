@@ -126,10 +126,10 @@
   
     </ng-container>
   
-    <ng-container matColumnDef="fullName">      <mat-header-cell class="centH" *matHeaderCellDef>{{fullName}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+    <ng-container matColumnDef="campName">      <mat-header-cell class="centH" *matHeaderCellDef>{{campName}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.campName}}</mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="custType">      <mat-header-cell class="centH" *matHeaderCellDef>{{custType}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.campName}}</mat-cell>
+    <ng-container matColumnDef="memberName">      <mat-header-cell class="centH" *matHeaderCellDef>{{memberName}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.memberName}}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="leadSt">      <mat-header-cell class="centH" *matHeaderCellDef>{{leadSt}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.campManager}}</mat-cell>
@@ -141,7 +141,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell class="cent" *matHeaderCellDef>{{edit}}</mat-header-cell>
       <mat-cell class="cent" mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="onEdit(row.leadId)" [disabled]="!screenRights.editFlag">
+        <button mat-icon-button color="primary" (click)="onEdit(row.campMemId)" [disabled]="!screenRights.editFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true">edit</mat-icon>
         </button>
       </mat-cell>
@@ -151,7 +151,7 @@
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary"
-          (click)="onDelete(row.leadId)" [disabled]="!screenRights.deleteFlag">
+          (click)="onDelete(row.campMemId)" [disabled]="!screenRights.deleteFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="warn">delete</mat-icon>
         </button>
       </mat-cell>
@@ -160,7 +160,7 @@
 
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.leadId)"
+      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.campMemId)"
           [disabled]="!screenRights.viewFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="primary">visibility
           </mat-icon>
@@ -170,7 +170,7 @@
 
     <mat-header-row class="headerRow" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.leadId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.campMemId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
 
   </mat-table>
 
@@ -182,21 +182,17 @@
     <mat-card fxLayout class="card">
       <div>
         <div fxLayoutGap="5px" class="index_row">
-          <h3>{{fullName}}</h3>
+          <h3>{{campName}}</h3>
           <h3>:</h3>
-          <h3 class="indexContent">{{index.name}}</h3>
+          <h3 class="indexContent">{{index.campName}}</h3>
         </div>
         
         <div fxLayoutGap="5px" class="index_row">
-          <h3>{{custType}}</h3>
+          <h3>{{memberName}}</h3>
           <h3>:</h3>
-          <h3 class="indexContent">{{ index.campName }}</h3>
+          <h3 class="indexContent">{{ index.memberName }}</h3>
         </div>
-        <div fxLayoutGap="5px" class="index_row">
-          <h3>{{leadSt}}</h3>
-          <h3>:</h3>
-          <h3 class="indexContent">{{ index.campManager }}</h3>
-        </div>
+       
         <!-- <div fxLayoutGap="5px" class="index_row">
           <h3>{{leadEn}}</h3>
           <h3>:</h3>
@@ -212,7 +208,7 @@
       <div>
         <button class="Btn" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
 <mat-menu #menu="matMenu">
-  <button (click)="onEdit(index.leadId)" class="Btn" mat-menu-item>{{edit}}</button>
+  <button (click)="onEdit(index.campMemId)" class="Btn" mat-menu-item>{{edit}}</button>
   
 </mat-menu>
       </div>

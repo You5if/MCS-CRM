@@ -23,18 +23,18 @@ export class LeadEntryService {
         private _auth: AuthService) {}
 
         Controllers(model: Send) {
-            return this.http.post(this._globals.baseAPIUrl + 'Lead/getuniventry', model, this._cf.requestOptions()).pipe(
+            return this.http.post(this._globals.baseAPIUrl + 'Campaign/getuniventry', model, this._cf.requestOptions()).pipe(
            map((response: any) => {
            return response.json();
            }), catchError(this._cf.handleError));
         }
 
         EntryA(arr: any){
-           return this.http.post(this._globals.baseAPIUrl + 'Lead/createuniv',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'Campaign/createuniv',arr);
         }
 
         EntryE(arr: any){
-           return this.http.post(this._globals.baseAPIUrl + 'Lead/edituniv',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'Campaign/edituniv',arr);
         }
 }
 

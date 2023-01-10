@@ -1,0 +1,165 @@
+<h1 [dir]="direction" class="title" >{{leadReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{lead}}</mat-label>
+      <mat-select 
+      [(ngModel)]="leadId"
+      name="leadId"
+      >
+        <mat-option *ngFor="let lead of leads" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+<h1 [dir]="direction" class="title" >{{businessLeadReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{businessLead}}</mat-label>
+      <mat-select 
+      [(ngModel)]="businessLeadId"
+      name="businessLeadId"
+      >
+        <mat-option *ngFor="let lead of businessLeads" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onBusinessReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+<h1 [dir]="direction" class="title" >{{cTypeLeadReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{cTypeLead}}</mat-label>
+      <mat-select 
+      [(ngModel)]="cTypeLeadId"
+      name="cTypeLeadId"
+      >
+        <mat-option *ngFor="let lead of cTypeLeads" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onCTypeReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+<h1 [dir]="direction" class="title" >{{leadClassReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{leadClass}}</mat-label>
+      <mat-select 
+      [(ngModel)]="leadClassId"
+      name="leadClassId"
+      >
+        <mat-option *ngFor="let lead of leadClasss" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onLeadClassReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+<h1 [dir]="direction" class="title" >{{leadStatusReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{leadStatus}}</mat-label>
+      <mat-select 
+      [(ngModel)]="leadStatusId"
+      name="leadStatusId"
+      >
+        <mat-option *ngFor="let lead of leadStatuss" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onleadStatusReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+<h1 [dir]="direction" class="title" >{{leadQualReports}}</h1>
+<div [dir]="direction">
+  <div fxLayoutGap="15px" class="line" >
+    <ngx-skeleton-loader *ngIf="workShimmer" count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '55px',
+      width: '900px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+    <mat-form-field *ngIf="!workShimmer" appearance="outline">
+      <mat-label>{{leadQual}}</mat-label>
+      <mat-select 
+      [(ngModel)]="leadQualId"
+      name="leadQualId"
+      >
+        <mat-option *ngFor="let lead of leadQuals" [value]="lead.id">
+          {{lead.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <div >
+      <button class="BtnS" (click)="onleadQualReport()"  mat-button color="primary" type="submit">{{submit}}</button>
+    </div>
+  </div>
+</div>
+
+
+ 

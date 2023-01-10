@@ -16,6 +16,14 @@ providedIn: 'root'
 // Definition of service class
 export class LeadService {
 
+  leadId: number;
+  businessLeadId: number;
+  cTypeLeadId: number;
+  leadClassId: number;
+  leadStatusId: number;
+  leadQualId: number;
+  campId: number;
+
    // Constructor definition
    constructor(
        private _globals: AppGlobals,
@@ -30,6 +38,20 @@ export class LeadService {
    getLeadEntry(id: number): Observable<LeadModel> {
       return this.httpClient.get<LeadModel>(this._globals.baseAPIUrl + 'Lead/' + id).pipe(
       map((result: LeadModel) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+   getLeadDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReport/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+   getCampDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Campaign/GetEntryWithDetails/' + id).pipe(
+      map((result: any) => {
       return result;
       }), catchError(this._cf.handleError)
       );
