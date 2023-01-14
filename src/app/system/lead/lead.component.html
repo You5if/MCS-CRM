@@ -219,9 +219,10 @@
 </section>
 
 <div class="paginator">
-  <mat-paginator *ngIf="!workShimmerPaginator" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
+  <mat-paginator *ngIf="!workShimmerPaginator" [hidePageSize]="true" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
   (page)="paginatoryOperation($event)" showFirstLastButtons>
 </mat-paginator>
+
 
 </div>
 <div *ngIf="workShimmerPaginator" class="itemRow">

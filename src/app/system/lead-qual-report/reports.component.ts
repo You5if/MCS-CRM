@@ -35,12 +35,12 @@ export class LeadQualReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.leadId = this.leadService.leadId
-    // this._ui.loadingStateChanged.next(false);
-    // this.leadService.getLeadDetails(this.leadId).subscribe((result) => {
-    //   this._ui.loadingStateChanged.next(false);
-    //   this.lead = result
-    // })
+    this.leadId = this.leadService.leadQualId
+    this._ui.loadingStateChanged.next(false);
+    this.leadService.getLeadQualDetails(this.leadId).subscribe((result) => {
+      this._ui.loadingStateChanged.next(false);
+      this.leads = result
+    })
   }
 
   

@@ -1,5 +1,6 @@
 import { Direction } from '@angular/cdk/bidi';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AppGlobals } from 'src/app/app.global';
 import { SelectService } from 'src/app/components/common/select.service';
@@ -44,6 +45,7 @@ export class LeadReportsComponent implements OnInit {
 
   constructor(
     private _globals: AppGlobals,
+    private titleService: Title,
     private _select: SelectService,
     private _report: ReportPageService,
     private router: Router,
@@ -51,6 +53,8 @@ export class LeadReportsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle("CRM | Lead Reports");
+
     this.workShimmer = true
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"

@@ -230,7 +230,7 @@
 
 <div class="paginator">
   
-<mat-paginator *ngIf="!workShimmer" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
+<mat-paginator [hidePageSize]="true" *ngIf="!workShimmer" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
 (page)="paginatoryOperation($event)" showFirstLastButtons>
 </mat-paginator>
 

@@ -10,7 +10,7 @@ export class SystemHomeComponent implements OnInit {
 
   constructor(
     private titleService: Title,) { 
-      this.titleService.setTitle("Welcome - CRM");
+      this.titleService.setTitle("UIC | CRM");
     }
 
   ngOnInit() {

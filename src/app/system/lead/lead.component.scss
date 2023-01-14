@@ -75,7 +75,7 @@
 .paginator {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 .itemRow {
@@ -214,3 +214,4 @@
     background-color: #e9e9e9;
   }
 }
+

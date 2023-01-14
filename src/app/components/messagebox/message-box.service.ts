@@ -11,6 +11,7 @@ import {
 } from '@angular/material/snack-bar';
 import { AppGlobals } from 'src/app/app.global';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { NewSnackbarComponent } from '../new-snackbar/new-snackbar.component';
 
 
 
@@ -18,6 +19,12 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
   providedIn: 'root'
 })
 export class MessageBoxService {
+
+  // Api messages is diplayed from here
+  
+
+
+
   blankGroup(arg0: string) {
     // this.dialog.open(WarningBoxComponent, {
     //   data: {
@@ -54,9 +61,10 @@ export class MessageBoxService {
       }
     })
   }
+  
 
-  horizontalPosition: MatSnackBarHorizontalPosition= 'end'
-  verticalPosition: MatSnackBarVerticalPosition= 'top'
+  horizontalPosition: MatSnackBarHorizontalPosition= 'center'
+  verticalPosition: MatSnackBarVerticalPosition= 'bottom'
 
   constructor(
     public dialog: MatDialog,
@@ -82,6 +90,8 @@ export class MessageBoxService {
       }
     })
   }
+
+  
 
   public FillRequired(): void {
     // this.dialog.open(WarningBoxComponent, {
@@ -291,6 +301,17 @@ export class MessageBoxService {
     });
   }
 
+  public newSnackBar(messageType: string, message: string): void {
+    this._snakBar.openFromComponent(NewSnackbarComponent,{
+      // horizontalPosition: this.horizontalPosition,
+      // verticalPosition: this.verticalPosition,
+      // duration: 6000,
+      data: {
+        message: message,
+        type: messageType
+      }
+    })
+  }
 
   public showInfo(title: string, message: string): void {
     // this.dialog.open(WarningBoxComponent, {
@@ -298,11 +319,11 @@ export class MessageBoxService {
     //     boxTitle: title,
     //     errorMessage: message
     //   }
-    // });
-    this.snackPosition()
+    // // });
+    // this.snackPosition()
     this._snakBar.openFromComponent(SnackbarComponent,{
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
       data: {
         title: title,
         message: message,

@@ -196,45 +196,24 @@ export class LeadEntryComponent implements OnInit {
            this.last.auditColumn = this._auth.getAuditColumns();
            this.dapiService.EntryA(this.last).subscribe(nexto => {
              this.res = nexto;
-             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-              this._msg.showInfo("Message", "saved succesfully");
+             this._msg.showInfo("Success", this.res.errorMessage);
             this.dialogRef.close();
-            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-              this._msg.showInfo("رسالة", "تم الحفظ بنجاح");
-            this.dialogRef.close();
-            }
      
            }, error => {
              console.log(error);
-             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-              this._msg.showInfo("Message", "Error!!");
+             this._msg.showInfo("Error", error.errorMessage);
             this.dialogRef.close();
-            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-              this._msg.showInfo("رسالة", "توجد مشكلة");
-            this.dialogRef.close();
-            }
            });
          }else if(this.last.records[0].entryMode == "E"){
            this.last.auditColumn = this._auth.getAuditColumns();
            this.dapiService.EntryE(this.last).subscribe(nexto => {
              this.res = nexto;
-             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-              this._msg.showInfo("Message", "saved succesfully");
+             this._msg.showInfo("Success", this.res.errorMessage);
             this.dialogRef.close();
-            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-              this._msg.showInfo("رسالة", "تم الحفظ بنجاح");
-            this.dialogRef.close();
-            }
      
            }, error => {
-             if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-              this._msg.showInfo("Message", "Error!!");
+             this._msg.showInfo("Error", error.errorMessage);
             this.dialogRef.close();
-            }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-              
-              this._msg.showInfo("خطأ!!", "توجد مشكلة");
-            this.dialogRef.close();
-            }
            });
          }
       }

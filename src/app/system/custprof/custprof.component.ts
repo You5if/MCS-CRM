@@ -18,6 +18,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Send } from 'src/app/send.model';
 import { Direction } from '@angular/cdk/bidi';
 import { AppGlobals } from 'src/app/app.global';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-custprof',
@@ -76,6 +77,7 @@ export class CustProfComponent implements OnInit {
         public dialog: MatDialog,
         private _cf: CommonService,
         private _ui: UIService,
+        private titleService: Title,
         private _globals: AppGlobals,
         private _msg: MessageBoxService,
         private _auth: AuthService,
@@ -91,6 +93,7 @@ export class CustProfComponent implements OnInit {
       }
 
   ngOnInit() {
+    this.titleService.setTitle("CRM | Customers");
       this.refreshMe();
   }
 

@@ -509,52 +509,30 @@ export class CustProfEntryComponent implements OnInit {
       
        console.log("Dark",this.lastDark);
         
-            if(this.lastDark.records[0].entryMode == "A"){
-              console.log('Last:', JSON.stringify(this.lastDark));
-             this.dapiService.EntryA(this.lastDark).subscribe(nexto => {
-               this.res = nexto;
-               if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-                this._msg.showInfo("Message", "Saved succesfully");
-              this.dialogRef.close();
-              }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-                this._msg.showInfo("رسالة", "تم الحفظ بنجاح");
-              this.dialogRef.close();
-              }
-       
-             }, error => {
-               console.log(error);
-               if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-                this._msg.showInfo("Message", "Error!!");
-              this.dialogRef.close();
-              }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-                
-                this._msg.showInfo("رسالة", "توجد مشكلة");
-              this.dialogRef.close();
-              }
-             });
-           }else if(this.lastDark.records[0].entryMode == "E"){
-             this.dapiService.EntryE(this.lastDark).subscribe(nexto => {
-               this.res = nexto;
-               if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-                this._msg.showInfo("Message", "Saved succesfully");
-              this.dialogRef.close();
-              }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-                this._msg.showInfo("رسالة", "تم حفظ بنجاح");
-              this.dialogRef.close();
-              }
-       
-             }, error => {
-               console.log(error);
-               if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
-                this._msg.showInfo("Message", "Error!!");
-              this.dialogRef.close();
-              }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
-                
-                this._msg.showInfo("خطأ!!", "توجد مشكلة");
-              this.dialogRef.close();
-              }
-             });
-           }
+       if(this.last.records[0].entryMode == "A"){
+        this.last.auditColumn = this._auth.getAuditColumns();
+        this.dapiService.EntryA(this.last).subscribe(nexto => {
+          this.res = nexto;
+          this._msg.showInfo("Success", this.res.errorMessage);
+         this.dialogRef.close();
+  
+        }, error => {
+          console.log(error);
+          this._msg.showInfo("Error", error.errorMessage);
+         this.dialogRef.close();
+        });
+      }else if(this.last.records[0].entryMode == "E"){
+        this.last.auditColumn = this._auth.getAuditColumns();
+        this.dapiService.EntryE(this.last).subscribe(nexto => {
+          this.res = nexto;
+          this._msg.showInfo("Success", this.res.errorMessage);
+         this.dialogRef.close();
+  
+        }, error => {
+          this._msg.showInfo("Error", error.errorMessage);
+         this.dialogRef.close();
+        });
+      }
   
         }
 

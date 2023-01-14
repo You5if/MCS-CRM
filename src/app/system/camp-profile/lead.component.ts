@@ -19,6 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DummyService } from '../dummy-data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-lead',
@@ -83,6 +84,7 @@ role = localStorage.getItem("role");
         private _msg: MessageBoxService,
         private _auth: AuthService,
         private _select: SelectService,
+        private titleService: Title,
         private leadservice: LeadService,
         private dummyService: DummyService,
       ) {
@@ -95,6 +97,8 @@ role = localStorage.getItem("role");
       }
 
   ngOnInit() {
+        this.titleService.setTitle("CRM | Campaign Profile");
+
       this.refreshMe();
   }
 
@@ -102,7 +106,7 @@ role = localStorage.getItem("role");
     this.workShimmer = true
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
-      this.header = "Campaign profile"
+      this.header = "Campaign Profile"
       this.leadId = "leadId"
       this.fullName = "Code"
       this.custType = "Name"

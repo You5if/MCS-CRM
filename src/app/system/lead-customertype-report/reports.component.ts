@@ -35,12 +35,12 @@ export class LeadCustomerTypeReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.leadId = this.leadService.leadId
-    // this._ui.loadingStateChanged.next(false);
-    // this.leadService.getLeadDetails(this.leadId).subscribe((result) => {
-    //   this._ui.loadingStateChanged.next(false);
-    //   this.lead = result
-    // })
+    this.leadId = this.leadService.cTypeLeadId
+    this._ui.loadingStateChanged.next(false);
+    this.leadService.getCustomerTypeLeadDetails(this.leadId).subscribe((result) => {
+      this._ui.loadingStateChanged.next(false);
+      this.leads = result
+    })
   }
 
   

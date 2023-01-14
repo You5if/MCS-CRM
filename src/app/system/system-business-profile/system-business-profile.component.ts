@@ -223,11 +223,11 @@ handleKeyUp(e:any){
         if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
           this._msg.showInfoSuccess("Message", "Saved succesfully");
           this._nav.onBusiness('Home')
-        this._nav.onClickListItem('H');
+        // this._nav.onClickListItem('H');
         }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
           this._msg.showInfoSuccess("رسالة", "تم الحفظ بنجاح");
           this._nav.onBusiness('Home')
-        this._nav.onClickListItem('H');
+        // this._nav.onClickListItem('H');
         }
         
         

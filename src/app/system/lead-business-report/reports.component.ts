@@ -18,9 +18,9 @@ export class LeadBusinessReportComponent implements OnInit {
   direction: Direction;
   submit: string;
   leadReports: string;
-  leads: any;
+  
   leadId: number;
-  lead: any;
+  leads: any;
   workShimmer: boolean;
 
 
@@ -35,12 +35,12 @@ export class LeadBusinessReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.leadId = this.leadService.leadId
-    // this._ui.loadingStateChanged.next(false);
-    // this.leadService.getLeadDetails(this.leadId).subscribe((result) => {
-    //   this._ui.loadingStateChanged.next(false);
-    //   this.lead = result
-    // })
+    this.leadId = this.leadService.businessLeadId
+    this._ui.loadingStateChanged.next(false);
+    this.leadService.getBusinessLeadDetails(this.leadId).subscribe((result) => {
+      this._ui.loadingStateChanged.next(false);
+      this.leads = result
+    })
   }
 
   

@@ -225,6 +225,8 @@ import { LeadCustomerTypeReportComponent } from "./system/lead-customertype-repo
 import { LeadClassReportComponent } from "./system/lead-class-report/reports.component";
 import { LeadStatusReportComponent } from "./system/lead-status-report/reports.component";
 import { LeadQualReportComponent } from "./system/lead-qual-report/reports.component";
+import { NewSnackbarComponent } from './components/new-snackbar/new-snackbar.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 
 
 
@@ -433,6 +435,7 @@ export const jwtConfig = {
     LeadClassReportComponent,
     LeadStatusReportComponent,
     LeadQualReportComponent,
+    NewSnackbarComponent,
     
     // EchartsComponent,
     
@@ -467,6 +470,7 @@ export const jwtConfig = {
     
   ],
   providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 6000}},
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -571,6 +575,7 @@ export const jwtConfig = {
     LeadClassReportComponent,
     LeadStatusReportComponent,
     LeadQualReportComponent,
+    NewSnackbarComponent,
     
    
 

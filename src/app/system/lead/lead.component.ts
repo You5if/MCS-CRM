@@ -18,6 +18,7 @@ import { AppGlobals } from 'src/app/app.global';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-lead',
@@ -86,6 +87,7 @@ role = localStorage.getItem("role");
         public dialog: MatDialog,
         private _cf: CommonService,
         private _globals: AppGlobals,
+        private titleService: Title,
         private _ui: UIService,
         private _msg: MessageBoxService,
         private _auth: AuthService,
@@ -101,6 +103,7 @@ role = localStorage.getItem("role");
       }
 
   ngOnInit() {
+    this.titleService.setTitle("CRM | Lead");
       this.refreshMe();
   }
 

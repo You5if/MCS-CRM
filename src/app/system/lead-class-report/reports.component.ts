@@ -35,12 +35,12 @@ export class LeadClassReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.leadId = this.leadService.leadId
-    // this._ui.loadingStateChanged.next(false);
-    // this.leadService.getLeadDetails(this.leadId).subscribe((result) => {
-    //   this._ui.loadingStateChanged.next(false);
-    //   this.lead = result
-    // })
+    this.leadId = this.leadService.leadClassId
+    this._ui.loadingStateChanged.next(false);
+    this.leadService.getLeadClassDetails(this.leadId).subscribe((result) => {
+      this._ui.loadingStateChanged.next(false);
+      this.leads = result
+    })
   }
 
   

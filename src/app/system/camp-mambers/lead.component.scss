@@ -73,11 +73,11 @@
   }
   
   .paginator {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
   .itemRow {
     display: flex;
     justify-content: center;

@@ -133,3 +133,7 @@ body {
 //   animation: inwards-close 225ms linear !important;
 //   animation-fill-mode: forwards;
 // }
+
+::ng-deep .mat-paginator-range-label{
+  display: none !important;
+}

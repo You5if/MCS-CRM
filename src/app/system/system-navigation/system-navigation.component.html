@@ -35,12 +35,12 @@
 
     <div class="menu_item">
       <ul class="side_list" id="myDIV">
-        <li (click)="onClickListItem('H')" fxHide class="side_list_item active"><mat-icon>home</mat-icon><div class="title"> {{home}}</div></li>
+        <li  fxHide class="side_list_item active"><mat-icon>home</mat-icon><div class="title"> {{home}}</div></li>
         
-        <li (click)="onClickListItem('BP')" fxHide class="side_list_item"><mat-icon>person</mat-icon><div class="title"> {{businessP}}</div></li>
-        <mat-divider></mat-divider>
-        <mat-accordion>
-          <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
+        <li  fxHide class="side_list_item"><mat-icon>person</mat-icon><div class="title"> {{businessP}}</div></li>
+       
+        
+          <mat-expansion-panel (opened)="openPanels(1)" class="mat-elevation-z0"  [expanded]="openPanel1" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>account_box</mat-icon> <div class="exTitle">{{management}}</div>
@@ -58,7 +58,7 @@
         
         <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
         
-          <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel (opened)="openPanels(2)" class="mat-elevation-z0" [expanded]="openPanel2" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>beenhere</mat-icon> <div class="exTitle">{{campaignManagement}}</div>
@@ -76,7 +76,7 @@
         
         <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
         
-          <mat-expansion-panel hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel (opened)="openPanels(3)" class="mat-elevation-z0" [expanded]="openPanel3" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon> local_printshop</mat-icon> <div class="exTitle">{{reports}}</div>
@@ -89,7 +89,7 @@
         <li *ngIf="role === '2'" routerLink="campaign-reports"  routerLinkActive="is-active"  class="side_list_item"><mat-icon>poll</mat-icon><div class="title"> {{campReports}}</div></li>
         
           </mat-expansion-panel>
-        </mat-accordion>
+       
         <!-- <div *ngIf="role === '2'" class="main_title">
           <span class="fon">{{management}}</span>
         </div>

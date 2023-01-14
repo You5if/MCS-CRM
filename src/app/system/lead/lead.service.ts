@@ -49,6 +49,41 @@ export class LeadService {
       }), catchError(this._cf.handleError)
       );
      }
+   getCustomerTypeLeadDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReportByCustType/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+   getLeadClassDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReportByLeadClass/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+   getLeadStatusDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReportByLeadStatus/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+   getLeadQualDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReportByLeadQuali/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
+     getBusinessLeadDetails(id: number): Observable<any> {
+      return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Lead/GetLeadReportByBusClass/' + id).pipe(
+      map((result: any) => {
+      return result;
+      }), catchError(this._cf.handleError)
+      );
+     }
    getCampDetails(id: number): Observable<any> {
       return this.httpClient.get<any>(this._globals.baseAPIUrl + 'Campaign/GetEntryWithDetails/' + id).pipe(
       map((result: any) => {
