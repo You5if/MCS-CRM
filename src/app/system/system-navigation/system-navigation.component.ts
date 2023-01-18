@@ -231,6 +231,8 @@ ngOnInit(): void {
       this.cheque = "Cheque"
       this.logout = "Logout"
       this.change = "Language:"
+
+      localStorage.setItem(this._globals.baseAppName + '_language', this.lang_LS);
  
 
   console.log(this.navigation);

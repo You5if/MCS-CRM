@@ -160,12 +160,12 @@ export class SDVehicleDetailEntryComponent implements OnInit {
   }
 
   onRemarks() {
-    this.pModel.sdUserId = +this._auth.getUserId();
+    this.pModel.sdUserId = Number(this._auth.getUserId());
     this.pModel.remarksDate = new Date();
   }
 
   onCustomerRemarks() {
-    this.pModel.customerUserId = +this._auth.getUserId();
+    this.pModel.customerUserId = Number(this._auth.getUserId());
     this.pModel.customerRemarksDate = new Date();
   }
 

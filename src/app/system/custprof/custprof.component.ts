@@ -196,7 +196,7 @@ export class CustProfComponent implements OnInit {
       recordId: 0,
       userId: 26,
       roleId: 2,
-      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+      languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add Customer");
@@ -225,7 +225,7 @@ export class CustProfComponent implements OnInit {
       recordId: id,
       userId: 26,
       roleId: 2,
-      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+      languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit customer");

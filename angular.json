@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Updated-Greenfield": {
+    "CRM": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,7 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/updated-greenfield",
+            "outputPath": "dist/crm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Updated-Greenfield:build:production"
+              "browserTarget": "CRM:build:production"
             },
             "development": {
-              "browserTarget": "Updated-Greenfield:build:development"
+              "browserTarget": "CRM:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Updated-Greenfield:build"
+            "browserTarget": "CRM:build"
           }
         },
         "test": {
@@ -115,5 +115,5 @@
       }
     }
   },
-  "defaultProject": "Updated-Greenfield"
+  "defaultProject": "CRM"
 }

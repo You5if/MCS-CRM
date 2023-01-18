@@ -60,7 +60,7 @@ campHost = [
     model: Send = {
       tableId: 122,
       recordId: 0,
-      userId: +this._auth.getUserId(),
+      userId: Number(this._auth.getUserId()),
       roleId: Number(localStorage.getItem('role')),
       languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
     };

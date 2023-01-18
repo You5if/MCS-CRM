@@ -18,11 +18,9 @@ $AladdinShipping-accent: mat-palette($mat-blue, A200, A100, A400);
 $AladdinShipping-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$AladdinShipping-theme: mat-light-theme(
-  $AladdinShipping-primary,
-  $AladdinShipping-accent,
-  $AladdinShipping-warn
-);
+$AladdinShipping-theme: mat-light-theme($AladdinShipping-primary,
+    $AladdinShipping-accent,
+    $AladdinShipping-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -37,11 +35,9 @@ $AladdinShipping-Dark-accent: mat-palette($mat-blue, A200, A100, A400);
 $AladdinShipping-Dark-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$AladdinShipping-Dark-theme: mat-dark-theme(
-  $AladdinShipping-Dark-primary,
-  $AladdinShipping-Dark-accent,
-  $AladdinShipping-Dark-warn
-);
+$AladdinShipping-Dark-theme: mat-dark-theme($AladdinShipping-Dark-primary,
+    $AladdinShipping-Dark-accent,
+    $AladdinShipping-Dark-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -106,21 +102,32 @@ body {
 }
 
 @keyframes inwards-open {
-  0%   { transform: rotate(0deg) ; }
-  100% { transform: rotate(90deg) ; }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
 }
 
 @keyframes inwards-close {
-  0%   { transform: rotate(0deg) !important; }
-  100% { transform: rotate(90deg) !important; }
+  0% {
+    transform: rotate(0deg) !important;
+  }
+
+  100% {
+    transform: rotate(90deg) !important;
+  }
 }
 
 .rotate {
-  transform: rotate(90deg) ;
+  transform: rotate(90deg);
   transition: 225ms;
 }
+
 .reverse {
-  transform: rotate(0deg) ;
+  transform: rotate(0deg);
   transition: 225ms;
 }
 
@@ -133,7 +140,3 @@ body {
 //   animation: inwards-close 225ms linear !important;
 //   animation-fill-mode: forwards;
 // }
-
-::ng-deep .mat-paginator-range-label{
-  display: none !important;
-}

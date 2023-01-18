@@ -671,7 +671,7 @@ export class SDVehicleDetailComponent implements OnInit {
         paymentAmount: 0,
         reference: "",
         memo: "",
-        sdUserId: +this._auth.getUserId(),
+        sdUserId: Number(this._auth.getUserId()),
         entryMode: "A",
         active: true,
         readOnly: false,

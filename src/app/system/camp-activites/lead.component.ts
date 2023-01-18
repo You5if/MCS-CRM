@@ -205,7 +205,7 @@ role = localStorage.getItem("role");
       recordId: 0,
       userId: Number(this._auth.getUserId()),
       roleId: Number(localStorage.getItem('role')),
-      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+      languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add Activity");
@@ -232,7 +232,7 @@ role = localStorage.getItem("role");
       recordId: id,
       userId: Number(this._auth.getUserId()),
       roleId: Number(localStorage.getItem('role')),
-      languageId: +localStorage.getItem(this._globals.baseAppName + '_language')!
+      languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit Activity");
