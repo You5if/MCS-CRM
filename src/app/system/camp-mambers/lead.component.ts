@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/components/common/common.service';
 import { UIService } from 'src/app/components/shared/uiservices/UI.service';
 import { MessageBoxService } from 'src/app/components/messagebox/message-box.service';
@@ -77,6 +77,19 @@ role = localStorage.getItem("role");
         shortCloseFlag: true,
         viewFlag: true
       };
+  
+      // Keyboard shortcuts handeler section
+      @HostListener('document:keydown', ['$event'])
+        handleKeyboardEvent(event: KeyboardEvent): void {
+          // console.log(this.pTableName, event);
+
+          // shortct fo add new record using "Alt + Shift + n" keys
+          if (event.keyCode == 78 && event.altKey && event.shiftKey && !this.workShimmer) {
+            event.preventDefault();
+            console.log("new tax");
+            this.onAdd()
+          }
+      }
 
     constructor(
         public dialog: MatDialog,
