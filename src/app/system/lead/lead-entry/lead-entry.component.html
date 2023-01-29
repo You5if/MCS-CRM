@@ -259,7 +259,47 @@
                     </mat-form-field>
                     
                   </div>
-                  <div *ngIf="source.tableColumnId != 1007 && source.tableColumnId != 1008 && source.tableColumnId != 1009">
+                  <div *ngIf="source.tableColumnId === 1057">
+                    <mat-form-field appearance="fill">
+                      <mat-label>{{ source.label }}</mat-label>
+                      <mat-select
+                        [(ngModel)]="+source.value"
+                        (selectionChange)="onCoreActivityChange($event.value)"
+                        [ngModelOptions]="{standalone: true}"
+                        
+                      >
+                        <mat-option
+                          *ngFor="let choice of source.myarray"
+                          [value]="choice.id"
+                          
+                        >
+                          {{ choice.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+                  </div>
+                  <div *ngIf="source.tableColumnId === 1102">
+                    <mat-form-field appearance="fill">
+                      <mat-label>{{ source.label }}</mat-label>
+                      <mat-select
+                        [(ngModel)]="+source.value"
+                        (selectionChange)="onSegmentChange($event.value)"
+                        [ngModelOptions]="{standalone: true}"
+                        
+                      >
+                        <mat-option
+                          *ngFor="let choice of source.myarray"
+                          [value]="choice.id"
+                          
+                        >
+                          {{ choice.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+                  </div>
+                  <div *ngIf="source.tableColumnId != 1007 && source.tableColumnId != 1008 && source.tableColumnId != 1009 && source.tableColumnId != 1057 && source.tableColumnId != 1102">
                     <mat-form-field  appearance="fill">
                       <mat-label>{{ source.label }}</mat-label>
                       <mat-select

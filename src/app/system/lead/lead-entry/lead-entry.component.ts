@@ -86,6 +86,8 @@ export class LeadEntryComponent implements OnInit {
 
     showCustDrop: boolean = false
     showCustName: boolean = false
+  refString: string;
+  stringOfV: string;
 
 
   constructor(
@@ -160,8 +162,63 @@ export class LeadEntryComponent implements OnInit {
       })
   }
 
+  onCoreActivityChange(typeId: number){
+    
+    this.stringOfV = typeId.toString()
+
+    for(let k=0;k<=this.dropList.length;k++) {
+    
+      if(this.dropList[k].tableColumnId == 1102) {
+        this.dropItem = this.dropList[k]
+        this.refString = this.dropItem.refCondition + this.stringOfV
+        console.log(this.refString, false);
+        
+        this._select.getDropdown(this.dropItem.refId, this.dropItem.refTable, this.dropItem.refColumn, this.refString, false).subscribe((res: SelectModel[]) => {
+          console.log("drop44002: ", res);
+          // res.push({id: 1, name: "None"})
+          this.dropList[k].myarray = res;
+          this.container.push(res);
+          console.log(this.container)
+  
+  
+      });
+      
+      }
+      
+
+    }
+  }
+
+  onSegmentChange(typeId: number){
+    
+    this.stringOfV = typeId.toString()
+
+    for(let k=0;k<=this.dropList.length;k++) {
+    
+      if(this.dropList[k].tableColumnId == 1103) {
+        this.dropItem = this.dropList[k]
+        this.refString = this.dropItem.refCondition + this.stringOfV
+        console.log(this.refString, false);
+        
+        this._select.getDropdown(this.dropItem.refId, this.dropItem.refTable, this.dropItem.refColumn, this.refString, false).subscribe((res: SelectModel[]) => {
+          console.log("drop44002: ", res);
+          // res.push({id: 1, name: "None"})
+          this.dropList[k].myarray = res;
+          this.container.push(res);
+          console.log(this.container)
+  
+  
+      });
+      
+      }
+      
+
+    }
+  }
+
   onClientTypeChange(typeId: number) {
     console.log("client type changed:", typeId);
+    this.stringOfV = typeId.toString()
     
     if (typeId === 44001 || typeId === 44003) {
       this.showCustDrop = true
@@ -171,6 +228,28 @@ export class LeadEntryComponent implements OnInit {
       this.showCustDrop = false
       this.showCustName = true
       this.data[2].value = "1"
+
+      for(let k=0;k<=this.dropList.length;k++) {
+      
+        if(this.dropList[k].tableColumnId == 1057) {
+          this.dropItem = this.dropList[k]
+          this.refString = this.dropItem.refCondition + this.stringOfV
+          console.log(this.refString, false);
+          
+          this._select.getDropdown(this.dropItem.refId, this.dropItem.refTable, this.dropItem.refColumn, this.refString, false).subscribe((res: SelectModel[]) => {
+            console.log("drop44002: ", res);
+            // res.push({id: 1, name: "None"})
+            this.dropList[k].myarray = res;
+            this.container.push(res);
+            console.log(this.container)
+    
+    
+        });
+        
+        }
+        
+  
+      }
     }
   }
 

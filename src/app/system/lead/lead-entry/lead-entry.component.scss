@@ -7,6 +7,9 @@
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
   background-color: gray;
 }
+::ng-deep .mat-select-panel{
+  min-width: fit-content !important;  
+}
 
 .section {
   width: 700px;
