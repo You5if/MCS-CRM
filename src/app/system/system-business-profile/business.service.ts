@@ -45,7 +45,11 @@ export class BusinessService {
            }
 
         businessEntryE(arr: any){
-           return this.http.post(this._globals.baseAPIUrl + 'Business/edituniv',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'Business/edituniv',arr).pipe(
+            map((response: any) => {
+                console.log('here: ', response.json());
+            return response.json();
+            }), catchError(this._cf.handleError));
         }
 
         imageChange(keyPass: FileListModel) {

@@ -39,7 +39,11 @@ export class ChangePWService {
 
         
         ChangePassword(arr: AppUserPasswordModel){
-           return this.http.post(this._globals.baseAPIUrl + 'AppUser/changepassword',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'AppUser/changepassword',arr).pipe(
+            map((response: any) => {
+                console.log('here: ', response.json());
+            return response.json();
+            }), catchError(this._cf.handleError));
         }
 
         

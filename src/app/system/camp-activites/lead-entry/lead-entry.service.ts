@@ -30,11 +30,19 @@ export class LeadEntryService {
         }
 
         EntryA(arr: any){
-           return this.http.post(this._globals.baseAPIUrl + 'CampAct/createuniv',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'CampAct/createuniv',arr).pipe(
+            map((response: any) => {
+                console.log('here: ', response.json());
+            return response.json();
+            }), catchError(this._cf.handleError));
         }
 
         EntryE(arr: any){
-           return this.http.post(this._globals.baseAPIUrl + 'CampAct/edituniv',arr);
+           return this.http.post(this._globals.baseAPIUrl + 'CampAct/edituniv',arr).pipe(
+            map((response: any) => {
+                console.log('here: ', response.json());
+            return response.json();
+            }), catchError(this._cf.handleError));
         }
 }
 
