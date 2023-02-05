@@ -43,7 +43,6 @@ dataSource: any;
 listOfShimmer = [1, 2, 3, 4, 5];
 isLastPage = false;
 pTableName: string;
-workShimmer:boolean;
 pScreenId: number;
 pTableId: number;
 recordsPerPage: number;

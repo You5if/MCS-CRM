@@ -8,9 +8,9 @@
 
     <section class="sec"  >
 
-      <button *ngIf="role === '2' && !workShimmer || role === '12' && !workShimmer" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
+      <button *ngIf="role === '2' && !workShimmerBtn || role === '12' &&!workShimmerCardBtn" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
  
-        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmer" class="skeleton" count="1" appearance="circle" [theme]="{ 
+        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmerBtn" class="skeleton" count="1" appearance="circle" [theme]="{ 
           'border-radius': '5px',
           height: '37px',
           width: '60px',
@@ -42,39 +42,11 @@
 </mat-toolbar>
 
 <!-- <Section [ngClass]="['custom-table-container']"> -->
- <div *ngIf="workShimmer" class="shimmerEffect" fxHide.xs>
-  <div class="item">
-    <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
-      'border-radius': '5px',
-      height: '50px',
-      width: '100%',
-      border: '1px solid white'
-    }"></ngx-skeleton-loader>
-  </div>
- 
-    <div class="item">
-      <ngx-skeleton-loader count="1" appearance="line" [theme]="{ 
-        'border-radius': '5px',
-        height: '300px',
-        border: '1px solid white'
-      }"></ngx-skeleton-loader>
-    </div>
-
-  <div class="itemRow">
-    <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
-      'border-radius': '5px',
-      height: '50px',
-      width: '500px',
-      border: '1px solid white'
-    }"></ngx-skeleton-loader>
-  </div>
-  
- </div>
- <div *ngIf="workShimmer" class="shimmerEffect" fxHide.gt-xs>
+ <div  class="shimmerEffect" fxHide.gt-xs>
   
     
  
-    <div class="itemRow">
+    <div *ngIf="workShimmerCardBtn" class="itemRow">
       <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
         'border-radius': '5px',
         height: '37px',
@@ -82,16 +54,16 @@
         border: '1px solid white'
       }"></ngx-skeleton-loader>
     </div>
-    <div class="itemRow">
+    <div *ngIf="workShimmerCard" class="itemRow">
       <ngx-skeleton-loader count="2" appearance="circle" [theme]="{ 
         'border-radius': '5px',
-        height: '150px',
+        height: '200px',
         width: '450px',
         border: '1px solid white'
       }"></ngx-skeleton-loader>
     </div>
   
-  <div class="itemRow">
+  <div *ngIf="workShimmerPaginator" class="itemRow">
     <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
       'border-radius': '5px',
       height: '50px',
@@ -104,9 +76,22 @@
   
   
   
-  <Section *ngIf="!workShimmer" [dir]="direction" fxHide.xs class="toolSection" mat-elevation-z8>
+  <Section  [dir]="direction" fxHide.xs  class="mainSection">
 
-    <mat-table #table [dataSource]="dataSource"  style="width: 100%">
+    <div class="tableHeader" *ngIf="!workShimmerHeader">
+      <div *ngFor="let header of headerToShow" class="tableHeaderItem">{{header}}</div>
+    </div>
+    <div *ngIf="workShimmerHeader" class="item">
+      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
+        'border-radius': '5px',
+        height: '50px',
+        width: '100%',
+        border: '1px solid white'
+      }"></ngx-skeleton-loader>
+    </div>
+
+    <div  class="toolSection" *ngIf="!workShimmerTable">
+      <mat-table  #table [dataSource]="dataSource"  style="width: 100%">
   
   
       <ng-container matColumnDef="select">
@@ -168,11 +153,21 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row class="headerRow" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <!-- <mat-header-row class="headerRow" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row> -->
 
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.campExpenseId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
 
   </mat-table>
+  </div>
+
+  <div *ngIf="workShimmerTable" class="item">
+    <ngx-skeleton-loader count="1" appearance="line" [theme]="{ 
+      'border-radius': '5px',
+      height: '340px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+  </div>
+
 
 </Section>
 
@@ -222,9 +217,17 @@
 </section>
 
 <div class="paginator">
-  
-<mat-paginator [hidePageSize]="true" *ngIf="!workShimmer" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
-(page)="paginatoryOperation($event)" showFirstLastButtons>
+  <mat-paginator *ngIf="!workShimmerPaginator" [hidePageSize]="true" [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
+  (page)="paginatoryOperation($event)" showFirstLastButtons>
 </mat-paginator>
 
+
+</div>
+<div *ngIf="workShimmerPaginator" class="itemRowPaginator">
+  <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
+    'border-radius': '5px',
+    height: '50px',
+    width: '250px',
+    border: '1px solid white'
+  }"></ngx-skeleton-loader>
 </div>

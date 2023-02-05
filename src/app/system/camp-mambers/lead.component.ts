@@ -37,7 +37,14 @@ dataSource: any;
 listOfShimmer = [1, 2, 3, 4, 5];
 isLastPage = false;
 pTableName: string;
-workShimmer:boolean;
+workShimmerBtn: boolean;
+  workShimmerTable: boolean;
+  workShimmerCard: boolean;
+  workShimmerPaginator: boolean;
+  workShimmerHeader:boolean;
+  workShimmerCardBtn: boolean;
+  headerToShow: any[] = []
+  workShimmer:boolean;
 pScreenId: number;
 pTableId: number;
 recordsPerPage: number;
@@ -127,7 +134,12 @@ role = localStorage.getItem("role");
   }
 
   refreshMe() {
-    this.workShimmer = true
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Campaign members"
@@ -163,7 +175,12 @@ role = localStorage.getItem("role");
     this._cf.getPageData('CampMem', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
-          this.workShimmer = false
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
 
           
           this.totalRecords = result[0].totalRecords;
@@ -193,12 +210,18 @@ role = localStorage.getItem("role");
   }
 
   paginatoryOperation(event: PageEvent) {
-    this.workShimmer = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this.workShimmer = false
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    
             // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;

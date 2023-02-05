@@ -509,7 +509,7 @@ export class CustProfEntryComponent implements OnInit {
       
        console.log("Dark",this.lastDark);
         
-       if(this.last.records[0].entryMode == "A"){
+       if(this.lastDark.records[0].entryMode == "A"){
         this.last.auditColumn = this._auth.getAuditColumns();
         this.dapiService.EntryA(this.last).subscribe(nexto => {
           this.res = nexto;
@@ -521,7 +521,7 @@ export class CustProfEntryComponent implements OnInit {
           this._msg.showInfo("Error", error.errorMessage);
          this.dialogRef.close();
         });
-      }else if(this.last.records[0].entryMode == "E"){
+      }else if(this.lastDark.records[0].entryMode == "E"){
         this.last.auditColumn = this._auth.getAuditColumns();
         this.dapiService.EntryE(this.last).subscribe(nexto => {
           this.res = nexto;
