@@ -1,12 +1,14 @@
 import { Direction } from '@angular/cdk/bidi';
 import { Component, OnInit } from '@angular/core';
 import { StyleDirective } from '@angular/flex-layout';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { matDrawerAnimations } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { ResizeEvent } from 'angular-resizable-element';
 // import { TouchSequence } from 'selenium-webdriver';
 import { AppGlobals } from 'src/app/app.global';
+import { BottomSheetSettingsComponent } from 'src/app/bottom-sheet-settings/bottom-sheet-settings.component';
 import { AuthService } from 'src/app/components/security/auth/auth.service';
 import { LoginModule } from 'src/app/components/security/auth/login/login.model';
 import { ChangePasswordNewComponent } from '../change-password/change-password.component';
@@ -128,9 +130,11 @@ export class SystemNavigationComponent implements OnInit {
   openPanel1: boolean;
   openPanel2: boolean;
   openPanel3: boolean;
+  more: string;
 
   constructor(private _globals: AppGlobals,
     private _auth: AuthService,
+    private _bottomSheet: MatBottomSheet,
     public dialog: MatDialog,
     private router: Router,) { }
     
@@ -162,6 +166,7 @@ ngOnInit(): void {
       this.bank = "Bank"
       this.transGood = "Transporting goods"
       this.profile = "Profile"
+      this.more = "More"
       this.partTrans = "Partners' management"
       this.invoice = "Invoice"
       this.partner = "Partners"
@@ -346,6 +351,7 @@ dialogRef.afterClosed().subscribe(() => {});
       this.inventory = "Inventory"
       this.product = "Product"
       this.profile = "Profile"
+      this.more = "More"
       this.shipping = "Shipping"
       this.supplier = "Supplier"
       this.suppForex = "Purchase forex"
@@ -443,6 +449,7 @@ dialogRef.afterClosed().subscribe(() => {});
       this.sales = "المبيعات"
       this.inventory = "المخزون"
       this.profile = "ملف المستخدم"
+      this.more = "المزيد"
       this.supplier = "الممول"
       this.product = "المنتجات"
       this.productCategory = "اصناف المنتجات"
@@ -512,6 +519,7 @@ dialogRef.afterClosed().subscribe(() => {});
       this.paymentAndReceipt = "Payment and Receipt"
       this.sales = "Sales"
       this.profile = "Profile"
+      this.more = "More"
       this.inventory = "Inventory"
       this.supplier = "Supplier"
       this.product = "Product"
@@ -559,6 +567,10 @@ dialogRef.afterClosed().subscribe(() => {});
   checkEng(){
     return (localStorage.getItem(this._globals.baseAppName + '_language') == '16002')
       
+  }
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(BottomSheetSettingsComponent);
   }
 
   resizeEdges(){

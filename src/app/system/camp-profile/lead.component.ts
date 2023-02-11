@@ -20,6 +20,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DummyService } from '../dummy-data.service';
 import { Title } from '@angular/platform-browser';
+import { CMemebersEntryComponent } from '../camp-mambers/lead-entry/lead-entry.component';
+import { viewMemebersEntryComponent } from '../camp-mambers/view-member/lead-entry.component';
 
 @Component({
     selector: 'app-lead',
@@ -30,7 +32,7 @@ import { Title } from '@angular/platform-browser';
 export class CProfileComponent implements OnInit {
 
   displayedColumns: string[] =
-  ['fullName','custType', 'leadSt'];
+  ['fullName','custType', 'leadSt','viewMembers', 'members'];
 
 dataSource: any;
 listOfShimmer = [1, 2, 3, 4, 5];
@@ -54,6 +56,10 @@ leadEn: string;
 clickedRows = new Set<any>();
 selection = new SelectionModel<any>(true, []);fullName: string;
   custType: string;
+  addMembers: string;
+  viewMembers: string;
+  headerToShow2: string[];
+  tooltipDisable : boolean;
 ;
 
 model: Send;
@@ -67,6 +73,7 @@ direction: Direction;
 indexes: any;
 leadId:string;
 role = localStorage.getItem("role");
+opC: boolean = true
 
     totalRecords: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -117,6 +124,11 @@ role = localStorage.getItem("role");
       }
 
   ngOnInit() {
+    if (localStorage.getItem(this._globals.baseAppName + '_tooltip') === 'true') {
+      this.tooltipDisable = true
+    }else {
+      this.tooltipDisable = false
+    }
         this.titleService.setTitle("CRM | Campaign Profile");
 
       this.refreshMe();
@@ -136,6 +148,8 @@ role = localStorage.getItem("role");
       this.fullName = "Code"
       this.custType = "Name"
       this.leadSt = "Manager"
+      this.addMembers = "Add Member"
+      this.viewMembers = "View Members"
       // this.accountCode = "Account Code"
       // this.accountName = "Account Name"
       // this.accountType = "Account Type"
@@ -144,6 +158,7 @@ role = localStorage.getItem("role");
       this.submit = "Submit"
       this.cancel = "Cancel"
       this.headerToShow = [this.fullName, this.custType,this.leadSt]
+      this.headerToShow2 = ['', '']
 
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
@@ -152,6 +167,8 @@ role = localStorage.getItem("role");
       this.fullName = "الرمز"
       this.custType = "الاسم"
       this.leadSt = "المدير"
+      this.addMembers = "اضافة عضو"
+      this.viewMembers = "رؤية الاعضاء"
       
       // this.accountCode = "رمز الحساب"
       // this.accountName = "اسم الحساب"
@@ -161,7 +178,7 @@ role = localStorage.getItem("role");
       this.submit = "ارسال"
       this.cancel = "الغاء"
       this.headerToShow = [this.fullName, this.custType,this.leadSt]
-
+      this.headerToShow2 = ['']
     }
    
     this._cf.getPageData('Campaign', this.pScreenId, this._auth.getUserId(), this.pTableId,
@@ -264,7 +281,42 @@ role = localStorage.getItem("role");
     });
   }
 
+  onViewMembers(id: number) {
+    this.opC = false
+   
+      const dialogRef3 = this.dialog.open(viewMemebersEntryComponent, {
+        disableClose: true,
+        
+        data: id
+      });
+      dialogRef3.afterClosed().subscribe(() => {
+        this.refreshMe();
+      });
+   
+    
+
+  }
+  onAddMembers(id: number) {
+    this.opC = false
+    this.model = {
+      tableId: 121,
+      recordId: 0,
+      userId: Number(this._auth.getUserId()),
+      roleId: Number(localStorage.getItem('role')),
+      languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
+    };
+    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add members");
+    }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "اضافة اعضاء");
+    }
+    
+    this.openEntryMembers(this.model, id);
+
+  }
+
   onEdit = (id: number) => {
+    if (this.opC == true) {
     this.model = {
       tableId: 120,
       recordId: id,
@@ -279,6 +331,10 @@ role = localStorage.getItem("role");
     }
     
     this.openEntry2(this.model)
+  }else {
+    this._ui.loadingStateChanged.next(false);
+    this.opC = true
+  }
   }
 
   onDelete = function(id: number) {
@@ -310,6 +366,32 @@ role = localStorage.getItem("role");
     }
 
   }
+
+  openEntryMembers  (result: any, id:number) {
+    if (result === undefined) {
+      const dialogRef2 = this.dialog.open(CMemebersEntryComponent, {
+        disableClose: true,
+        
+        data: {}
+      });
+      dialogRef2.afterClosed().subscribe(() => {
+        this.refreshMe();
+      });
+    } else {
+      const dialogRef2 = this.dialog.open(CMemebersEntryComponent, {
+        disableClose: true,
+        
+        data: {
+          data: result,
+          campId: id
+        }
+      });
+      dialogRef2.afterClosed().subscribe(() => {
+        this.refreshMe();
+      });
+    }
+  };
+
 
   openEntry  (result: LeadModel) {
     if (result === undefined) {

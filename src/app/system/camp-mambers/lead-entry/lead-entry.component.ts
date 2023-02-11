@@ -109,6 +109,7 @@ campHost = [
     todo = ['employee 1','employee 2','employee 4',];
 
   done = ['employee 3',];
+  workShimmer: boolean;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -133,11 +134,12 @@ campHost = [
       private _select: SelectService,
       private dummyService: DummyService,
       private dialogRef: MatDialogRef<CMemebersEntryComponent>,
-      @Inject(MAT_DIALOG_DATA) public pModel: Send
+      @Inject(MAT_DIALOG_DATA) public pModel: any
   ) { }
 
   ngOnInit() {
-    
+    this.workShimmer = true
+    // this._ui.loadingStateChanged.next(true);
     var newnum = 1
     for (let i = 0; i < this.dummyService.campProfile.length; i++) {
       var newMem = {id: 0, name: ''}
@@ -157,10 +159,15 @@ campHost = [
         this.cancel = "الغاء"
       }
 
-      this._ui.loadingStateChanged.next(true);
-      this.dapiService.Controllers(this.pModel).subscribe(res => {
-        this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(true);
+      this.dapiService.Controllers(this.pModel.data).subscribe(res => {
+        this.workShimmer = false
+        // this._ui.loadingStateChanged.next(false);
         this.data = res;
+        this.data[1].value = this.pModel.campId.toString()
+        // this.data[1].access = "NoAccess"
+        
+
         if (this.data[1].value === "44002") {
           this.showCustDrop = false
       this.showCustName = true
@@ -171,7 +178,7 @@ campHost = [
 
         for(let i=0;i<=this.data.length;i++){
           this.ver2 = this.data[i]
-          if (this.ver2 && this.ver2.inTransaction && this.ver2.access != "NoAccess"){
+          if (this.ver2 && this.ver2.inTransaction && this.ver2.access != "NoAccess"&& this.ver2.tableColumnId != 1071){
             if (this.ver2.type === "dropdown") {
               this.dropList.push(this.ver2);
               console.log("droplist: ",this.dropList)

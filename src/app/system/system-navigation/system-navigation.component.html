@@ -58,7 +58,7 @@
         
         <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
         
-          <mat-expansion-panel (opened)="openPanels(2)" class="mat-elevation-z0" [expanded]="openPanel2" hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel *ngIf="role === '2'" (opened)="openPanels(2)" class="mat-elevation-z0" [expanded]="openPanel2" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>beenhere</mat-icon> <div class="exTitle">{{campaignManagement}}</div>
@@ -76,7 +76,7 @@
         
         <!-- <mat-divider *ngIf="role === '2'"></mat-divider> -->
         
-          <mat-expansion-panel (opened)="openPanels(3)" class="mat-elevation-z0" [expanded]="openPanel3" hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel *ngIf="role === '2'" (opened)="openPanels(3)" class="mat-elevation-z0" [expanded]="openPanel3" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon> local_printshop</mat-icon> <div class="exTitle">{{reports}}</div>
@@ -157,7 +157,7 @@
             <mat-icon class="settings">settings</mat-icon>
           </button>
           <mat-menu #menu3="matMenu">
-            <button class="icon" (click)="onChangeLanguage()" mat-menu-item>
+            <button fxLayoutGap="10px" class="icon" (click)="onChangeLanguage()" mat-menu-item>
               <i class="fas fa-globe"></i>
               <span class="logout">{{lang}}</span>
             </button>
@@ -165,15 +165,21 @@
               <i class="fas fa-user"></i>
               <span class="logout">{{profile}}</span>
             </button> -->
-            <button class="icon" (click)="onChangePassword()" mat-menu-item>
-              <a class="icon-insde">
+            <button fxLayoutGap="10px"  class="icon" (click)="onChangePassword()" mat-menu-item>
+              <!-- <a  class="icon-insde">
                 <i class="fas fa-key"></i>
                 {{changePassword}}
-                </a>
+                </a> -->
+                <i class="fas fa-key"></i>
+              <span class="logout"> {{changePassword}}</span>
             </button>
-            <button class="icon" (click)="onSignOut()" mat-menu-item>
+            <button fxLayoutGap="10px" class="icon" (click)="onSignOut()" mat-menu-item>
               <i class="fas fa-sign-out-alt"></i>
               <span class="logout"> {{logout}}</span>
+            </button>
+            <button fxLayoutGap="10px" class="icon" (click)="openBottomSheet()" mat-menu-item>
+              <span class="logout"> {{more}} ...</span>
+            <!-- <mat-icon>more_horiz</mat-icon> -->
             </button>
             
             

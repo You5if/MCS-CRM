@@ -26,12 +26,12 @@ mat-expansion-panel {
 }
 mat-expansion-panel:hover {
   .exTitle {
-    width: 150px;
+    width: 155px;
     margin-left: 10px;
     font-weight: bold;
-    white-space: unset;
-      text-overflow: unset;
-      overflow: unset;
+    white-space: nowrap;
+      // text-overflow: unset;
+      // overflow: unset;
   }
 }
 ::ng-deep.mat-expansion-panel-body {
@@ -43,13 +43,13 @@ mat-panel-title {
  
 }
 .exTitle {
-  width: 150px;
+  // width: 155px;
   font-size: 14px !important;
   margin-left: 10px;
   font-weight: bold;
   white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
 }
 ::ng-deep.mat-expansion-indicator::after {
   color: white;
@@ -78,6 +78,10 @@ mat-expansion-panel-header {
 
   font-size: 30px;
 }
+
+// .iconMore {
+//   padding: 0 10;
+// }
 
 // .fa-globe,
 // .fa-user,
@@ -200,7 +204,7 @@ mat-expansion-panel-header {
 .example-sidenav {
   padding: 20px 5px 20px 0;
   background: #2E2A26;
-  width: 240px;
+  width: 250px;
 
   max-width: 400px;
   min-width: 180px;

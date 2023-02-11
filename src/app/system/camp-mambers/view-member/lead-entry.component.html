@@ -1,0 +1,45 @@
+
+<section class="section" [dir]="direction">
+  <div class="bigMain" fxLayout>
+    <h3 class="fontY">
+      {{ dialog_title  }} 
+    </h3>
+    <img (click)="onCancel()" class="cancel_Img" src="../../../../assets/images/svg/close.png" alt="">
+  </div>
+
+
+  <form class="Main" [dir]="direction"  >
+    
+    <ngx-skeleton-loader  *ngIf="workShimmer" class="skeleton" count="5" appearance="circle" [theme]="{ 
+      'border-radius': '5px',
+      height: '30px',
+      width: '250px',
+      border: '1px solid white'
+    }"></ngx-skeleton-loader>
+      
+    <div *ngIf="!workShimmer">
+      <div  *ngFor="let mem of members">
+              
+        <div class="mem">
+          {{mem.memberName}}
+        </div>
+        
+      
+    </div>
+    </div>
+        
+
+                
+              
+      
+  
+    
+  </form>
+  <!-- <div class="btn-container">
+    <button class="BtnC" (click)="onCancel()" mat-button color="warn" type="submit">{{cancel}}</button>
+    <button class="BtnS" (click)="onSubmit()" mat-button color="primary" type="submit">{{submit}}</button>
+  </div> -->
+</section>
+
+
+

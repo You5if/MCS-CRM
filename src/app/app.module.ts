@@ -227,6 +227,8 @@ import { LeadStatusReportComponent } from "./system/lead-status-report/reports.c
 import { LeadQualReportComponent } from "./system/lead-qual-report/reports.component";
 import { NewSnackbarComponent } from './components/new-snackbar/new-snackbar.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
+import { viewMemebersEntryComponent } from "./system/camp-mambers/view-member/lead-entry.component";
+import { BottomSheetSettingsComponent } from './bottom-sheet-settings/bottom-sheet-settings.component';
 
 
 
@@ -436,6 +438,8 @@ export const jwtConfig = {
     LeadStatusReportComponent,
     LeadQualReportComponent,
     NewSnackbarComponent,
+    viewMemebersEntryComponent,
+    BottomSheetSettingsComponent,
     
     // EchartsComponent,
     
@@ -576,6 +580,7 @@ export const jwtConfig = {
     LeadStatusReportComponent,
     LeadQualReportComponent,
     NewSnackbarComponent,
+    viewMemebersEntryComponent,
     
    
 

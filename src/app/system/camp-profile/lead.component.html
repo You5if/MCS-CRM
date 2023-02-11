@@ -8,14 +8,7 @@
 
     <section class="sec"  >
 
-      <button *ngIf="role === '2' && !workShimmerBtn || role === '12' &&!workShimmerCardBtn" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
- 
-        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmerBtn" class="skeleton" count="1" appearance="circle" [theme]="{ 
-          'border-radius': '5px',
-          height: '37px',
-          width: '60px',
-          border: '1px solid white'
-        }"></ngx-skeleton-loader>
+      
         
     
       <!-- <button mat-button color="primary" (click)="openEntry()">Filter</button>
@@ -78,8 +71,23 @@
   
   <Section  [dir]="direction" fxHide.xs  class="mainSection">
 
-    <div class="tableHeader" *ngIf="!workShimmerHeader">
-      <div *ngFor="let header of headerToShow" class="tableHeaderItem">{{header}}</div>
+    <div fxLayout>
+      <div class="tableHeader" *ngIf="!workShimmerHeader">
+        <div *ngFor="let header of headerToShow" class="tableHeaderItem">{{header}}</div>
+      </div>
+      <div class="tableHeader2" *ngIf="!workShimmerHeader">
+        <div  class="tableHeaderItem">
+          <button *ngIf="role === '2' && !workShimmerBtn || role === '12' &&!workShimmerCardBtn" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
+ 
+        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmerBtn" class="skeleton" count="1" appearance="circle" [theme]="{ 
+          'border-radius': '5px',
+          height: '37px',
+          width: '60px',
+          border: '1px solid white'
+        }"></ngx-skeleton-loader>
+        </div>
+        <div *ngFor="let header of headerToShow2" class="tableHeaderItem">{{header}}</div>
+      </div>
     </div>
     <div *ngIf="workShimmerHeader" class="item">
       <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 
@@ -117,7 +125,7 @@
     <ng-container matColumnDef="custType">      <mat-header-cell class="centH" *matHeaderCellDef>{{custType}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.campaignName}}</mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="leadSt">      <mat-header-cell class="centH" *matHeaderCellDef>{{leadSt}}</mat-header-cell>     <mat-cell class="cent" mat-cell *matCellDef="let row">{{row.managerName}}</mat-cell>
+    <ng-container matColumnDef="leadSt">      <mat-header-cell class="centH" *matHeaderCellDef>{{leadSt}}</mat-header-cell>     <mat-cell class="centEmail" mat-cell *matCellDef="let row"><div class="centEmail">{{row.managerName}}</div></mat-cell>
     </ng-container>
    
     
@@ -142,10 +150,29 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="viewMembers">
+      <mat-header-cell class="cent" *matHeaderCellDef>View</mat-header-cell>
+      <mat-cell class="cent" mat-cell *matCellDef="let row"><button mat-icon-button [matTooltip]="viewMembers" [matTooltipDisabled]="tooltipDisable" matTooltipPosition="above" class="viewMemberBtn" (click)="onViewMembers(row.campaignId)"
+          [disabled]="!screenRights.viewFlag">
+          <mat-icon >group
+          </mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
 
+    <ng-container matColumnDef="members">
+      <mat-header-cell class="cent" *matHeaderCellDef>View</mat-header-cell>
+      <mat-cell class="cent" mat-cell *matCellDef="let row"><button mat-icon-button [matTooltip]="addMembers" [matTooltipDisabled]="tooltipDisable" matTooltipPosition="above" class="addMemberBtn"  (click)="onAddMembers(row.campaignId)"
+          [disabled]="!screenRights.viewFlag">
+          <mat-icon >add
+          </mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+   
     <ng-container matColumnDef="view">
-      <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.campaignId)"
+      <mat-header-cell class="cent" *matHeaderCellDef>View</mat-header-cell>
+      <mat-cell class="cent" mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.campaignId)"
           [disabled]="!screenRights.viewFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="primary">visibility
           </mat-icon>

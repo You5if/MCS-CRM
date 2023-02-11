@@ -101,6 +101,33 @@
 .cent {
   display: flex;
   justify-content: center;
+  // text-overflow: unset;
+  //     overflow: unset;
+}
+
+.addMemberBtn {
+  color: #20bf6b;
+  font-weight: bold;
+  outline: none;
+  border: none;
+}
+.viewMemberBtn {
+  color: lightgray;
+  font-weight: bold;
+  outline: none;
+  border: none;
+}
+.viewMemberBtn:hover {
+  color: gray;
+  font-weight: bold;
+}
+.centEmail {
+  
+  width: 210px;
+  
+  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .index_row {
   display: flex;
@@ -152,6 +179,18 @@
   display: flex;
   margin-bottom: 5px;
   border-radius: 7px;
+  height: 50px;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 24px;
+}
+.tableHeader2 {
+  background: #ffffff;
+  display: flex;
+  margin-bottom: 5px;
+  border-radius: 7px;
+  flex: 0.7;
   height: 50px;
   align-items: center;
   justify-content: space-around;
