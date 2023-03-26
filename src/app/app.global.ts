@@ -27,9 +27,9 @@ export class AppGlobals {
   //   readonly baseAPIRootUrl: string = 'https://localhost:44377/api/';
 
   /* Development Server */
-  readonly baseAPIFileUrl: string = "http://49.50.77.201/ticketingapi/";
-  readonly baseAPIUrl: string = "http://49.50.77.201/ticketingapi/api/";
-  readonly baseAPIRootUrl: string = "http://49.50.77.201/ticketingapi/api/";
+  readonly baseAPIFileUrl: string = "http://49.50.77.201/crmapi/";
+  readonly baseAPIUrl: string = "http://49.50.77.201/crmapi/api/";
+  readonly baseAPIRootUrl: string = "http://49.50.77.201/crmapi/api/";
 
   /* Live Server */
   // readonly baseAPIFileUrl: string = "https://appapi.aladdinshipping.com/";

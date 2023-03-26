@@ -16,6 +16,7 @@ import { LeadEntryService } from './lead-entry.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Direction } from '@angular/cdk/bidi';
 import { DummyService } from '../../dummy-data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-lead-entry',
@@ -88,7 +89,7 @@ campHost = [
     res: any;
     spacepoint: any;
     spacezone: boolean;
-    data: Sources[];
+    data: any[];
     ver: Sources;
     maxSize: number;
     submit: string;
@@ -116,6 +117,7 @@ campHost = [
 
     showCustDrop: boolean = false
     showCustName: boolean = false
+  minDate: Date;
 
 
   constructor(
@@ -128,7 +130,9 @@ campHost = [
       private dummyService: DummyService,
       private dialogRef: MatDialogRef<CProfileEntryComponent>,
       @Inject(MAT_DIALOG_DATA) public pModel: Send
-  ) { }
+  ) { 
+    // this.minDate = new Date();
+  }
 
   ngOnInit() {
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
@@ -145,6 +149,24 @@ campHost = [
       this.dapiService.Controllers(this.pModel).subscribe(res => {
         this._ui.loadingStateChanged.next(false);
         this.data = res;
+        if (localStorage.getItem(this._globals.baseAppName + '_Add&Edit2') == "Add") {
+          this.data[4].value = moment()
+          this.data[4].min = new Date()
+        this.data[5].value = moment()
+        this.data[5].min = new Date()
+        this.data[6].value = moment()
+        this.data[6].min = new Date()
+        this.data[7].value = moment()
+        this.data[7].min = new Date()
+        }else if (localStorage.getItem(this._globals.baseAppName + '_Add&Edit2') == "Edit") {
+          this.data[4].access = "ViewOnly"
+        this.data[5].value = moment(this.data[5].value)
+        this.data[6].value = moment(this.data[6].value)
+        this.data[7].value = moment(this.data[7].value)
+        this.data[5].min = moment(this.data[4].value)
+        this.data[6].min = moment(this.data[4].value)
+        this.data[7].min = moment(this.data[6].value)
+        }
         if (this.data[1].value === "44002") {
           this.showCustDrop = false
       this.showCustName = true
@@ -191,6 +213,40 @@ campHost = [
       })
   }
 
+  onDate(id: number, value: any) {
+    console.log(value);
+    
+    if (id == 1062) {
+        this.data[5].min = this.data[4].value
+        this.data[6].min = this.data[4].value
+        this.data[7].min = this.data[4].value
+        if (this.data[5].value<this.data[5].min) {
+          this.data[5].value = this.data[5].min
+        }
+        if (this.data[6].value<this.data[6].min) {
+          this.data[6].value = this.data[6].min
+        }
+        if (this.data[7].value<this.data[7].min) {
+          this.data[7].value = this.data[7].min
+        }
+    }else if (id == 1063) {
+      
+    }else if (id == 1064) {
+      this.data[7].min = this.data[6].value
+      if (this.data[5].value<this.data[5].min) {
+        this.data[5].value = this.data[5].min
+      }
+      if (this.data[6].value<this.data[6].min) {
+        this.data[6].value = this.data[6].min
+      }
+      if (this.data[7].value<this.data[7].min) {
+        this.data[7].value = this.data[7].min
+      }
+    }else if (id == 1065) {
+      
+    }
+  }
+
   onClientTypeChange(typeId: number) {
     console.log("client type changed:", typeId);
     
@@ -206,6 +262,10 @@ campHost = [
   }
 
   onSubmit() {
+    this.data[4].value = new Date(Date.UTC(this.data[4].value.toDate().getFullYear(), this.data[4].value.toDate().getMonth(), this.data[4].value.toDate().getDate(), this.data[4].value.toDate().getHours(), this.data[4].value.toDate().getMinutes(), this.data[4].value.toDate().getSeconds()));
+    this.data[5].value = new Date(Date.UTC(this.data[5].value.toDate().getFullYear(), this.data[5].value.toDate().getMonth(), this.data[5].value.toDate().getDate(), this.data[5].value.toDate().getHours(), this.data[5].value.toDate().getMinutes(), this.data[5].value.toDate().getSeconds()));
+    this.data[6].value = new Date(Date.UTC(this.data[6].value.toDate().getFullYear(), this.data[6].value.toDate().getMonth(), this.data[6].value.toDate().getDate(), this.data[6].value.toDate().getHours(), this.data[6].value.toDate().getMinutes(), this.data[6].value.toDate().getSeconds()));
+    this.data[7].value = new Date(Date.UTC(this.data[7].value.toDate().getFullYear(), this.data[7].value.toDate().getMonth(), this.data[7].value.toDate().getDate(), this.data[7].value.toDate().getHours(), this.data[7].value.toDate().getMinutes(), this.data[7].value.toDate().getSeconds()));
     this.data.forEach((Object)=> this.light.forEach((obj)=>
     {
       if(Object.tableColumnId === obj.tableColumnId){

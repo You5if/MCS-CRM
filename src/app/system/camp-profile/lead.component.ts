@@ -149,7 +149,7 @@ opC: boolean = true
       this.custType = "Name"
       this.leadSt = "Manager"
       this.addMembers = "Add Member"
-      this.viewMembers = "View Members"
+      this.viewMembers = "Members"
       // this.accountCode = "Account Code"
       // this.accountName = "Account Name"
       // this.accountType = "Account Type"
@@ -157,7 +157,7 @@ opC: boolean = true
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
-      this.headerToShow = [this.fullName, this.custType,this.leadSt]
+      this.headerToShow = [this.fullName, this.custType,this.leadSt, this.viewMembers, this.addMembers]
       this.headerToShow2 = ['', '']
 
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
@@ -168,7 +168,7 @@ opC: boolean = true
       this.custType = "الاسم"
       this.leadSt = "المدير"
       this.addMembers = "اضافة عضو"
-      this.viewMembers = "رؤية الاعضاء"
+      this.viewMembers = "الاعضاء"
       
       // this.accountCode = "رمز الحساب"
       // this.accountName = "اسم الحساب"
@@ -177,7 +177,7 @@ opC: boolean = true
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
-      this.headerToShow = [this.fullName, this.custType,this.leadSt]
+      this.headerToShow = [this.fullName, this.custType,this.leadSt, this.viewMembers, this.addMembers]
       this.headerToShow2 = ['']
     }
    
@@ -264,8 +264,10 @@ opC: boolean = true
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add campaign");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Add");
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "اضافة حملة");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Add");
     }
     
     this.openEntry2(this.model);
@@ -326,8 +328,10 @@ opC: boolean = true
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit campaign");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Edit");
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل حملة");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Edit");
     }
     
     this.openEntry2(this.model)

@@ -239,8 +239,10 @@ role = localStorage.getItem("role");
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add lead");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Add");
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "اضافة");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Add");
     }
     
     this.openEntry2(this.model);
@@ -266,8 +268,11 @@ role = localStorage.getItem("role");
     };
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Edit lead");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Edit");
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "تعديل");
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit2', "Edit");
+
     }
     
     this.openEntry2(this.model)

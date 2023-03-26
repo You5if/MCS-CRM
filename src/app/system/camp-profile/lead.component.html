@@ -8,7 +8,14 @@
 
     <section class="sec"  >
 
-      
+      <button *ngIf="role === '2' && !workShimmerBtn || role === '12' &&!workShimmerCardBtn" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
+ 
+        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmerBtn" class="skeleton" count="1" appearance="circle" [theme]="{ 
+          'border-radius': '5px',
+          height: '37px',
+          width: '60px',
+          border: '1px solid white'
+        }"></ngx-skeleton-loader>
         
     
       <!-- <button mat-button color="primary" (click)="openEntry()">Filter</button>
@@ -75,19 +82,7 @@
       <div class="tableHeader" *ngIf="!workShimmerHeader">
         <div *ngFor="let header of headerToShow" class="tableHeaderItem">{{header}}</div>
       </div>
-      <div class="tableHeader2" *ngIf="!workShimmerHeader">
-        <div  class="tableHeaderItem">
-          <button *ngIf="role === '2' && !workShimmerBtn || role === '12' &&!workShimmerCardBtn" class="add_btn" mat-button color="primary" (click)="onAdd()" [disabled]="!screenRights.createFlag"><mat-icon >add</mat-icon></button>
- 
-        <ngx-skeleton-loader fxHide.xs *ngIf="workShimmerBtn" class="skeleton" count="1" appearance="circle" [theme]="{ 
-          'border-radius': '5px',
-          height: '37px',
-          width: '60px',
-          border: '1px solid white'
-        }"></ngx-skeleton-loader>
-        </div>
-        <div *ngFor="let header of headerToShow2" class="tableHeaderItem">{{header}}</div>
-      </div>
+      
     </div>
     <div *ngIf="workShimmerHeader" class="item">
       <ngx-skeleton-loader count="1" appearance="circle" [theme]="{ 

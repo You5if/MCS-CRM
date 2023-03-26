@@ -19,15 +19,21 @@
           <div [ngSwitch]="source.type">
             <mat-grid-tile *ngSwitchCase="'Date'">
               <div [ngSwitch]="source.access">
-                <mat-form-field *ngSwitchCase="'Editable'" appearance="outline">
+                <mat-form-field *ngSwitchCase="'Editable'" fxLayout appearance="fill">
                   <mat-label>{{ source.label }}</mat-label>
-                  <input
+                  <div fxLayout>
+                    <input
                     matInput
+                    [min]="source.min"
                     [(ngModel)]="source.value"
                     name="{{ source.label }}"
-                    type="date"
+                    [matDatepicker]="picker"
+                    (dateInput)="onDate(source.tableColumnId, source.value)"
                     placeholder="Date"
                   />
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker  #picker></mat-datepicker>
+                  </div>
 
 
                 </mat-form-field>

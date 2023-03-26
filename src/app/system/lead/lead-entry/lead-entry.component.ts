@@ -116,6 +116,10 @@ export class LeadEntryComponent implements OnInit {
       this.dapiService.Controllers(this.pModel).subscribe(res => {
         this._ui.loadingStateChanged.next(false);
         this.data = res;
+        
+       
+          this.data[20].value=Math.trunc(Number(this.data[20].value)).toString()
+        
         if (this.data[1].value === "44002") {
           this.showCustDrop = false
       this.showCustName = true
