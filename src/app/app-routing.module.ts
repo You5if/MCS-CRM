@@ -51,6 +51,7 @@ import { LeadStatusReportComponent } from "./system/lead-status-report/reports.c
 import { LeadQualReportComponent } from "./system/lead-qual-report/reports.component";
 
 
+
 const routes: Routes = [
   { path: "", component: LoginComponent, data: { title: "CRM - Login"}, },
   
@@ -58,7 +59,7 @@ const routes: Routes = [
   {
     path: "welcome",
     component: WelcomeComponent,
-    data: { title: "Welcome - Greenfield" },
+    data: { title: "Welcome - CRM" },
   },
   {
     path: "login",
@@ -77,6 +78,7 @@ const routes: Routes = [
         { path: '', redirectTo: 'Home', pathMatch: 'full' },
         { path: "Home", component: SystemHomeComponent},
         { path: "customer", component: CustProfComponent},
+        // { path: "lead", component: LeadUnderdevelopComponent},
         { path: "lead", component: LeadComponent},
         { path: "campaign-profile", component: CProfileComponent},
         { path: "campaign-members", component: CMemebersComponent},

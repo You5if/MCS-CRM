@@ -229,6 +229,11 @@ import { NewSnackbarComponent } from './components/new-snackbar/new-snackbar.com
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 import { viewMemebersEntryComponent } from "./system/camp-mambers/view-member/lead-entry.component";
 import { BottomSheetSettingsComponent } from './bottom-sheet-settings/bottom-sheet-settings.component';
+import { ConfBoxComponent } from "./system/confirmbox/checkfordelete.component";
+import { CheckfordeleteComponent } from "./system/operation/checkfordelete/checkfordelete.component";
+import { MyFilterComponent } from "./system/operation/my-filter/my-filter.component";
+import { MySortComponent } from "./system/operation/my-sort/my-sort.component";
+
 
 
 
@@ -440,6 +445,10 @@ export const jwtConfig = {
     NewSnackbarComponent,
     viewMemebersEntryComponent,
     BottomSheetSettingsComponent,
+    ConfBoxComponent,
+    CheckfordeleteComponent,
+    MyFilterComponent,
+    MySortComponent,
     
     // EchartsComponent,
     
@@ -581,6 +590,10 @@ export const jwtConfig = {
     LeadQualReportComponent,
     NewSnackbarComponent,
     viewMemebersEntryComponent,
+    ConfBoxComponent,
+    CheckfordeleteComponent,
+    MyFilterComponent,
+    MySortComponent,
     
    
 

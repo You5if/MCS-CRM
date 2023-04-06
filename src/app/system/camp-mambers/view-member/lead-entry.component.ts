@@ -13,10 +13,13 @@ import { AppGlobals } from 'src/app/app.global';
 import { Send } from 'src/app/send.model';
 import { Sources } from 'src/app/source.model';
 import { LeadEntryService } from './lead-entry.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Direction } from '@angular/cdk/bidi';
 import { DummyService } from '../../dummy-data.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CheckfordeleteComponent } from '../../operation/checkfordelete/checkfordelete.component';
+import { DeleteModel } from '../../camp-profile/lead.model';
+import { CMemebersEntryComponent } from '../lead-entry/lead-entry.component';
 
 @Component({
   selector: 'app-lead-entry',
@@ -94,6 +97,7 @@ campHost = [
     obj2: Sources;
   
     direction: Direction;
+    deleteModel!: DeleteModel
   
     dropItem: Sources;
     container: any[][] =[];
@@ -103,6 +107,7 @@ campHost = [
     dialog_title: string |null = localStorage.getItem(this._globals.baseAppName + '_Add&Edit');
   
     dropList: Sources[] = [];
+    noMembers: boolean;
 
     showCustDrop: boolean = false
     showCustName: boolean = false
@@ -110,6 +115,9 @@ campHost = [
 
   done = ['employee 3',];
   workShimmer: boolean;
+  addMember: string;
+  dialog_title2: string;
+  noMem: boolean = true;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -129,6 +137,7 @@ campHost = [
 	  private dapiService: LeadEntryService,
       private _ui: UIService,
       private _msg: MessageBoxService,
+      public dialog: MatDialog,
       private _auth: AuthService,
       private _globals: AppGlobals,
       private _select: SelectService,
@@ -138,26 +147,121 @@ campHost = [
   ) { }
 
   ngOnInit() {
+    console.log(this.pModel);
+    
+    this.refreshMe()
+      
+      
+  }
+  refreshMe() {
     this.workShimmer = true
+    
     // this._ui.loadingStateChanged.next(true);
     if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
         this.direction = "ltr"
+        this.addMember = "No added members"
+        this.dialog_title2 = "Members"
         this.submit = "Submit"
         this.cancel = "Cancel"
       }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
         this.direction = "rtl"
+        this.addMember = "لا يوجد اعضاء بعد"
         this.submit = "ارسال"
+        this.dialog_title2 = "الاعضاء"
         this.cancel = "الغاء"
       }
 
       this.dapiService.getMembers(this.pModel).subscribe((result) => {
+        
         this.workShimmer = false
         this.members = result
+        if (this.members.length == 0) {
+          this.members = [{memberId:0, memberName: this.addMember}]
+        }
+        
       })
-      
-      
   }
 
+  onRemoveMem(idAC: number) {
+    
+      this.deleteModel = {
+        name: 'Campmem',
+        id: idAC
+      }
+      this.openConfirmDialog(this.deleteModel)
+      // this._ui.loadingStateChanged.next(true);
+      // this.invoiceservice.getDelete(id).subscribe((result) => {
+      //   this._ui.loadingStateChanged.next(false);
+      //   this.refreshMe();
+      // })
+    
+}
+
+openConfirmDialog(result: any) {
+  if (result === undefined) {
+    const dialogRef = this.dialog.open(CheckfordeleteComponent, {
+      disableClose: true,
+
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshMe();
+    });
+  } else {
+    const dialogRef = this.dialog.open(CheckfordeleteComponent, {
+      disableClose: true,
+
+      data: result
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshMe();
+    });
+  }
+}
+
+onAddMembers(id: number) {
+ 
+  this.model = {
+    tableId: 121,
+    recordId: 0,
+    userId: Number(this._auth.getUserId()),
+    roleId: Number(localStorage.getItem('role')),
+    languageId: Number(localStorage.getItem(this._globals.baseAppName + '_language'))
+  };
+  if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Add members");
+  }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+    localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "اضافة اعضاء");
+  }
+  
+  this.openEntryMembers(this.model, id);
+
+}
+
+openEntryMembers  (result: any, id:number) {
+  if (result === undefined) {
+    const dialogRef2 = this.dialog.open(CMemebersEntryComponent, {
+      disableClose: true,
+      
+      data: {}
+    });
+    dialogRef2.afterClosed().subscribe(() => {
+      this.refreshMe();
+    });
+  } else {
+    const dialogRef2 = this.dialog.open(CMemebersEntryComponent, {
+      disableClose: true,
+      
+      data: {
+        data: result,
+        campId: id
+      }
+    });
+    dialogRef2.afterClosed().subscribe(() => {
+      this.refreshMe();
+    });
+  }
+};
  
 
   onResize(event:any) {

@@ -2,31 +2,39 @@
 <section class="section" [dir]="direction">
   <div class="bigMain" fxLayout>
     <h3 class="fontY">
-      {{ dialog_title  }} 
+      {{ dialog_title2  }} 
     </h3>
     <img (click)="onCancel()" class="cancel_Img" src="../../../../assets/images/svg/close.png" alt="">
   </div>
 
 
-  <form class="Main" [dir]="direction"  >
+  <form  [dir]="direction"  >
     
-    <ngx-skeleton-loader  *ngIf="workShimmer" class="skeleton" count="5" appearance="circle" [theme]="{ 
-      'border-radius': '5px',
-      height: '30px',
-      width: '250px',
-      border: '1px solid white'
-    }"></ngx-skeleton-loader>
-      
-    <div *ngIf="!workShimmer">
-      <div  *ngFor="let mem of members">
-              
-        <div class="mem">
-          {{mem.memberName}}
-        </div>
+    
+    
+      <ngx-skeleton-loader  *ngIf="workShimmer" class="skeleton" count="5" appearance="circle" [theme]="{ 
+        'border-radius': '5px',
+        height: '30px',
+        width: '250px',
+        border: '1px solid white'
+      }"></ngx-skeleton-loader>
         
+      <div class="memCon" *ngIf="!workShimmer">
+  
+        
+          <div  *ngFor="let mem of members">
+            
+            <div class="mem">
+              <div>{{mem.memberName}}</div>
+              <button *ngIf="mem.memberId != 0"  class="remove_btn" mat-button color="primary" (click)="onRemoveMem(mem.memberId)"><mat-icon >remove</mat-icon></button>
+    
+            </div>
+            
+          
+        </div>
+        </div>
       
-    </div>
-    </div>
+    
         
 
                 

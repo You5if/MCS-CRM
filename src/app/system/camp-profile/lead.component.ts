@@ -284,7 +284,13 @@ opC: boolean = true
   }
 
   onViewMembers(id: number) {
+
     this.opC = false
+    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "Members");
+    }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
+      localStorage.setItem(this._globals.baseAppName + '_Add&Edit', "الاعضاء");
+    }
    
       const dialogRef3 = this.dialog.open(viewMemebersEntryComponent, {
         disableClose: true,

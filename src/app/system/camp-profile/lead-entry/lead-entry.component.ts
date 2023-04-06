@@ -16,7 +16,7 @@ import { LeadEntryService } from './lead-entry.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Direction } from '@angular/cdk/bidi';
 import { DummyService } from '../../dummy-data.service';
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
   selector: 'app-lead-entry',
