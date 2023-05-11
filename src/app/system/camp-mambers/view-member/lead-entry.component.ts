@@ -169,7 +169,7 @@ campHost = [
         this.submit = "ارسال"
         this.dialog_title2 = "الاعضاء"
         this.cancel = "الغاء"
-      }
+      } 
 
       this.dapiService.getMembers(this.pModel).subscribe((result) => {
         
